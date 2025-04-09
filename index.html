@@ -19,6 +19,8 @@
     h1 {
       font-size: 3em;
       margin-top: 40px;
+      font-family: 'Monotype Corsiva', cursive;
+      color: #fff;
       text-shadow: 2px 2px 5px #ff69b4;
     }
 
@@ -41,7 +43,7 @@
     }
 
     .galeria img {
-      width: 200px;
+      width: 180px;
       height: auto;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -69,8 +71,8 @@
 
   <div class="galeria">
     <img src="img/foto1.jpeg" alt="Foto 1" />
-    <img src="img/foto3.jpeg" alt="Foto 3" />
     <img src="img/foto2.jpeg" alt="Foto 2" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
   </div>
 
   <audio autoplay loop>
@@ -98,18 +100,4 @@
     // corações caindo
     function criarCoracao() {
       const cora = document.createElement("div");
-      cora.classList.add("coraçao");
-      cora.style.left = Math.random() * 100 + "vw";
-      cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      cora.innerHTML = "❤";
-      document.body.appendChild(cora);
-
-      setTimeout(() => {
-        cora.remove();
-      }, 5000);
-    }
-
-    setInterval(criarCoracao, 300);
-  </script>
-</body>
-</html>
+      cora.classList.add("coraçao
