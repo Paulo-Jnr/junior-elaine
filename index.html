@@ -22,7 +22,7 @@
       text-shadow: 2px 2px 5px #ff69b4;
     }
 
-    /* NOVO CONTADOR */
+    /* CONTADOR ESTILIZADO */
     #contador {
       display: flex;
       flex-wrap: wrap;
@@ -147,7 +147,15 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos... (texto permanece o mesmo)
+    Já faz um ano e dois meses desde que nos reencontramos e, sinceramente, parece que foi ontem que nossos olhares se cruzaram de novo. Eu nem imaginava que o destino tinha algo tão especial guardado pra gente, mas olha só onde estamos: vivendo momentos inesquecíveis e construindo uma história de amor que eu nunca pensei ser possível.<br><br>
+
+    Sou grato por cada sorriso, cada risada, cada aventura e também pelos momentos de calma que dividimos. Você trouxe uma luz nova pra minha vida, uma alegria leve e sincera que eu nem sabia que precisava. Com você, tudo faz mais sentido. <br><br>
+
+    Sou grato por ter te reencontrado. Por ter tido a chance de conhecer você de novo, de uma forma mais profunda. Cada conversa, cada desafio, cada silêncio entre nós me ensinou algo. Me fez crescer. Me fez entender melhor quem eu sou e o que eu quero da vida — e o que eu quero é você. <br><br>
+
+    Hoje, com um ano e dois meses de história, eu tenho certeza: quero passar o resto da minha vida ao seu lado. Quero casar com você, construir uma vida juntos, encher nossos dias de memórias que vamos guardar pra sempre. Quero acordar com você todo dia e saber que tenho ao meu lado alguém que me ama, me apoia e me faz sorrir mesmo nos dias difíceis. <br><br>
+
+    Eu te amo. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
   </div>
 
   <video controls>
@@ -189,12 +197,12 @@
       if (meses < 0) { meses += 12; anos--; }
 
       document.getElementById("contador").innerHTML = `
-        <div class="caixa-contador"><strong>${anos}</strong> ano(s)</div>
-        <div class="caixa-contador"><strong>${meses}</strong> mês(es)</div>
-        <div class="caixa-contador"><strong>${dias}</strong> dia(s)</div>
-        <div class="caixa-contador"><strong>${horas}</strong> hora(s)</div>
-        <div class="caixa-contador"><strong>${minutos}</strong> minuto(s)</div>
-        <div class="caixa-contador"><strong>${segundos}</strong> segundo(s)</div>
+        <div class="caixa-contador"><strong>${anos}</strong> ano</div>
+        <div class="caixa-contador"><strong>${meses}</strong> meses</div>
+        <div class="caixa-contador"><strong>${dias}</strong> dias</div>
+        <div class="caixa-contador"><strong>${horas}</strong> horas</div>
+        <div class="caixa-contador"><strong>${minutos}</strong> minutos</div>
+        <div class="caixa-contador"><strong>${segundos}</strong> segundos</div>
       `;
     }
 
