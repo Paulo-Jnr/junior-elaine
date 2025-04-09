@@ -100,4 +100,18 @@
     // corações caindo
     function criarCoracao() {
       const cora = document.createElement("div");
-      cora.classList.add("coraçao
+      cora.classList.add("coraçao");
+      cora.style.left = Math.random() * 100 + "vw";
+      cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      cora.innerHTML = "❤";
+      document.body.appendChild(cora);
+
+      setTimeout(() => {
+        cora.remove();
+      }, 5000);
+    }
+
+    setInterval(criarCoracao, 300);
+  </script>
+</body>
+</html>
