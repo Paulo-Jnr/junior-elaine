@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Junior & Elaine</title>
   <style>
     body {
@@ -60,11 +60,6 @@
       font-size: 1.5em;
     }
 
-    .mensagem-secundaria {
-      margin-top: 30px;
-      font-size: 1.4em;
-    }
-
     .mensagem-texto-longo {
       margin-top: 40px;
       max-width: 800px;
@@ -92,6 +87,24 @@
       to {
         transform: translateY(110vh);
       }
+    }
+
+    #botao-musica {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    #botao-musica:hover {
+      background-color: #ff85c1;
     }
   </style>
 </head>
@@ -123,8 +136,11 @@
 
   <div class="espaco-final"></div>
 
-  <!-- Música local -->
-  <audio autoplay loop>
+  <!-- Botão de play da música -->
+  <button id="botao-musica" onclick="document.getElementById('musica').play()">🎵 Tocar música</button>
+
+  <!-- Elemento de áudio -->
+  <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
