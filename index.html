@@ -89,6 +89,7 @@
       }
     }
 
+    /* Botão de música */
     #botao-musica {
       position: fixed;
       top: 15px;
@@ -96,13 +97,14 @@
       background-color: #ff69b4;
       border: none;
       color: white;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 15px;
+      font-size: 14px;
       cursor: pointer;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
       z-index: 10;
     }
+
     #botao-musica:hover {
       background-color: #ff85c1;
     }
@@ -136,12 +138,10 @@
 
   <div class="espaco-final"></div>
 
-  <!-- Botão de play da música -->
-  <button id="botao-musica" onclick="document.getElementById('musica').play()">🎵 Tocar música</button>
-
-  <!-- Elemento de áudio -->
+  <!-- Botão e áudio -->
+  <button id="botao-musica">▶️</button>
   <audio id="musica" loop>
-    <source src="Musica.mp3" type="audio/mpeg">
+    <source src="Musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
 
@@ -157,7 +157,8 @@
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+      document.getElementById("contador").innerHTML = 
+        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -170,12 +171,26 @@
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
 
-      setTimeout(() => {
-        cora.remove();
-      }, 5000);
+      setTimeout(() => cora.remove(), 5000);
     }
 
     setInterval(criarCoracao, 300);
+
+    // Botão de música
+    const musica = document.getElementById("musica");
+    const botao = document.getElementById("botao-musica");
+    let tocando = false;
+
+    botao.addEventListener("click", () => {
+      if (tocando) {
+        musica.pause();
+        botao.textContent = "▶️";
+      } else {
+        musica.play();
+        botao.textContent = "⏸️";
+      }
+      tocando = !tocando;
+    });
   </script>
 </body>
 </html>
