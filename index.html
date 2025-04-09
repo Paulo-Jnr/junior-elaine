@@ -23,7 +23,7 @@
       text-shadow: 2px 2px 5px #ff69b4;
     }
 
-    #contador, #contadorRegressivo {
+    #contador {
       font-size: 2em;
       margin: 20px 0;
       color: #fff;
@@ -71,7 +71,7 @@
     }
 
     .espaco-final {
-      height: 60px;
+      height: 100px;
     }
 
     .coraçao {
@@ -118,12 +118,38 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    #contadorRegressivo {
-      margin-top: 40px;
-      font-size: 1.6em;
-      color: #fff;
+    .flip-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 50px auto;
+      flex-wrap: wrap;
+    }
+
+    .flip-box {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      border-radius: 15px;
+      padding: 20px;
+      font-size: 2em;
       font-weight: bold;
-      text-shadow: 1px 1px 3px #ff69b4;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 80px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .flip-box:hover {
+      transform: scale(1.1);
+    }
+
+    .flip-label {
+      font-size: 0.6em;
+      margin-top: 5px;
+      display: block;
+      text-transform: uppercase;
+      color: #ff69b4;
     }
   </style>
 </head>
@@ -143,23 +169,26 @@
 
   <div class="mensagem-texto-longo">
     Já faz um ano e dois meses desde que nos reencontramos e, sinceramente, parece que foi ontem que nossos olhares se cruzaram de novo. Eu nem imaginava que o destino tinha algo tão especial guardado pra gente, mas olha só onde estamos: vivendo momentos inesquecíveis e construindo uma história de amor que eu nunca pensei ser possível.<br><br>
+
     Sou grato por cada sorriso, cada risada, cada aventura e também pelos momentos de calma que dividimos. Você trouxe uma luz nova pra minha vida, uma alegria leve e sincera que eu nem sabia que precisava. Com você, tudo faz mais sentido. <br><br>
+
     Sou grato por ter te reencontrado. Por ter tido a chance de conhecer você de novo, de uma forma mais profunda. Cada conversa, cada desafio, cada silêncio entre nós me ensinou algo. Me fez crescer. Me fez entender melhor quem eu sou e o que eu quero da vida — e o que eu quero é você. <br><br>
+
     Hoje, com um ano e dois meses de história, eu tenho certeza: quero passar o resto da minha vida ao seu lado. Quero casar com você, construir uma vida juntos, encher nossos dias de memórias que vamos guardar pra sempre. Quero acordar com você todo dia e saber que tenho ao meu lado alguém que me ama, me apoia e me faz sorrir mesmo nos dias difíceis. <br><br>
+
     Eu te amo. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
   </div>
+
+  <!-- Contador regressivo -->
+  <div class="flip-container" id="contadorRegressivo"></div>
+
+  <div class="espaco-final"></div>
 
   <video controls>
     <source src="video.mp4" type="video/mp4" />
     Seu navegador não suporta vídeo.
   </video>
 
-  <!-- Contador Regressivo -->
-  <div id="contadorRegressivo"></div>
-
-  <div class="espaco-final"></div>
-
-  <!-- Botão de música -->
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
@@ -194,7 +223,10 @@
       cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
-      setTimeout(() => cora.remove(), 5000);
+
+      setTimeout(() => {
+        cora.remove();
+      }, 5000);
     }
 
     setInterval(criarCoracao, 300);
@@ -210,25 +242,28 @@
       tocando = !tocando;
     }
 
-    // Contador regressivo para 13 de junho às 21h
+    // Flip card countdown
     const destino = new Date("2025-06-16T21:00:00").getTime();
+
+    function formatarNumero(num) {
+      return num < 10 ? "0" + num : num;
+    }
 
     function atualizarContadorRegressivo() {
       const agora = new Date().getTime();
       const diferenca = destino - agora;
-
-      if (diferenca <= 0) {
-        document.getElementById("contadorRegressivo").innerHTML = "É hoje! 💍💑";
-        return;
-      }
 
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-      document.getElementById("contadorRegressivo").innerHTML =
-        `Faltam ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos 💍`;
+      document.getElementById("contadorRegressivo").innerHTML = `
+        <div class="flip-box">${formatarNumero(dias)}<span class="flip-label">dias</span></div>
+        <div class="flip-box">${formatarNumero(horas)}<span class="flip-label">horas</span></div>
+        <div class="flip-box">${formatarNumero(minutos)}<span class="flip-label">min</span></div>
+        <div class="flip-box">${formatarNumero(segundos)}<span class="flip-label">seg</span></div>
+      `;
     }
 
     setInterval(atualizarContadorRegressivo, 1000);
