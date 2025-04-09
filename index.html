@@ -37,13 +37,10 @@
       flex-wrap: wrap;
       gap: 20px;
       margin-top: 30px;
-      z-index: 1;
-      position: relative;
     }
 
     .galeria img {
       width: 180px;
-      height: auto;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
@@ -68,10 +65,6 @@
       font-size: 1.2em;
       line-height: 1.6em;
       text-align: justify;
-    }
-
-    .espaco-final {
-      height: 60px;
     }
 
     .coraçao {
@@ -118,33 +111,36 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    /* Contador Regressivo com Flip Cards (sem animação) */
     .contador-regressivo {
       display: flex;
       justify-content: center;
       gap: 10px;
       margin-top: 2cm;
+      flex-wrap: wrap;
     }
 
     .flip {
-      background-color: #fff;
-      color: #ff69b4;
-      padding: 20px 10px;
+      background: rgba(255,255,255,0.2);
+      padding: 20px;
       border-radius: 10px;
-      width: 70px;
-      font-size: 1.8em;
-      font-weight: bold;
+      text-align: center;
+      width: 80px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    }
+
+    .flip div {
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
     }
 
     .flip span {
-      font-size: 0.5em;
-      margin-top: 5px;
-      color: #999;
+      font-size: 0.9em;
+      color: #fff;
+    }
+
+    .espaco-final {
+      height: 80px;
     }
   </style>
 </head>
@@ -172,18 +168,18 @@
 
   <div class="espaco-final"></div>
 
-  <!-- Videoclipe -->
   <video controls>
     <source src="video.mp4" type="video/mp4" />
     Seu navegador não suporta vídeo.
   </video>
 
-  <!-- Contador regressivo abaixo do vídeo -->
+  <!-- Contador regressivo -->
   <div class="contador-regressivo">
-    <div class="flip"><div id="dias"></div><span>Dias</span></div>
-    <div class="flip"><div id="horas"></div><span>Horas</span></div>
-    <div class="flip"><div id="minutos"></div><span>Minutos</span></div>
-    <div class="flip"><div id="segundos"></div><span>Segundos</span></div>
+    <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
+    <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
+    <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
+    <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
+    <div class="flip"><div>💍</div><span>Aliança</span></div>
   </div>
 
   <!-- Botão de música -->
@@ -214,6 +210,17 @@
 
     setInterval(atualizarContador, 1000);
 
+    function toggleMusica() {
+      if (tocando) {
+        musica.pause();
+        botaoMusica.textContent = "▶️";
+      } else {
+        musica.play();
+        botaoMusica.textContent = "⏸️";
+      }
+      tocando = !tocando;
+    }
+
     function criarCoracao() {
       const cora = document.createElement("div");
       cora.classList.add("coraçao");
@@ -226,41 +233,24 @@
 
     setInterval(criarCoracao, 300);
 
-    function toggleMusica() {
-      if (tocando) {
-        musica.pause();
-        botaoMusica.textContent = "▶️";
-      } else {
-        musica.play();
-        botaoMusica.textContent = "⏸️";
-      }
-      tocando = !tocando;
-    }
-
-    // Contador regressivo
+    // CONTADOR REGRESSIVO
     const destino = new Date("2025-06-16T21:00:00").getTime();
-
-    function atualizarContadorRegressivo() {
+    function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
-
-      if (tempoRestante < 0) {
-        document.querySelector(".contador-regressivo").innerHTML = "💍 Chegou o grande momento!";
-        return;
-      }
 
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
 
-      document.getElementById("dias").textContent = dias;
-      document.getElementById("horas").textContent = horas;
-      document.getElementById("minutos").textContent = minutos;
-      document.getElementById("segundos").textContent = segundos;
+      document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
+      document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
+      document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
+      document.getElementById("segundosR").textContent = segundos.toString().padStart(2, '0');
     }
 
-    setInterval(atualizarContadorRegressivo, 1000);
+    setInterval(atualizarRegressivo, 1000);
   </script>
 </body>
 </html>
