@@ -105,8 +105,6 @@
     "Cada momento com você é uma nova chance de sorrir. Te amo! 💖"
   </div>
 
-  
-
   <div class="mensagem-texto-longo">
     Já faz um ano e dois meses desde que nos reencontramos e, sinceramente, parece que foi ontem que nossos olhares se cruzaram de novo. Eu nem imaginava que o destino tinha algo tão especial guardado pra gente, mas olha só onde estamos: vivendo momentos inesquecíveis e construindo uma história de amor que eu nunca pensei ser possível.<br><br>
 
@@ -114,6 +112,47 @@
 
     Sou grato por ter te reencontrado. Por ter tido a chance de conhecer você de novo, de uma forma mais profunda. Cada conversa, cada desafio, cada silêncio entre nós me ensinou algo. Me fez crescer. Me fez entender melhor quem eu sou e o que eu quero da vida — e o que eu quero é você. <br><br>
 
-    Hoje, com um ano e dois meses de história, eu tenho certeza: quero passar o resto da minha vida ao seu lado. Quero casar com você, construir uma vida juntos, encher nossos dias de memórias que vamos guardar pra sempre. Quero acordar com você todo dia e saber que tenho ao meu lado alguém que me ama, me apoia e me faz sorrir mesmo nos dias difíceis.
+    Hoje, com um ano e dois meses de história, eu tenho certeza: quero passar o resto da minha vida ao seu lado. Quero casar com você, construir uma vida juntos, encher nossos dias de memórias que vamos guardar pra sempre. Quero acordar com você todo dia e saber que tenho ao meu lado alguém que me ama, me apoia e me faz sorrir mesmo nos dias difíceis. <br><br>
 
-Eu te amo mais do que qualquer palavra pode explicar. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
+    Eu te amo. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    const inicio = new Date("2024-02-13T00:00:00").getTime();
+
+    function atualizarContador() {
+      const agora = new Date().getTime();
+      const diferenca = agora - inicio;
+
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+    }
+
+    setInterval(atualizarContador, 1000);
+
+    function criarCoracao() {
+      const cora = document.createElement("div");
+      cora.classList.add("coraçao");
+      cora.style.left = Math.random() * 100 + "vw";
+      cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      cora.innerHTML = "❤";
+      document.body.appendChild(cora);
+
+      setTimeout(() => {
+        cora.remove();
+      }, 5000);
+    }
+
+    setInterval(criarCoracao, 300);
+  </script>
+</body>
+</html>
