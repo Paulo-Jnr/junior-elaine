@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine</title>
   <style>
     body {
@@ -19,32 +19,16 @@
       font-size: 3.5em;
       margin-top: 40px;
       font-family: 'Monotype Corsiva', cursive;
+      color: #fff;
       text-shadow: 2px 2px 5px #ff69b4;
     }
 
-    /* CONTADOR ESTILIZADO */
     #contador {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 30px auto;
-      max-width: 800px;
-    }
-
-    .caixa-contador {
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 1.2em;
+      font-size: 2em;
+      margin: 20px 0;
       color: #fff;
-      text-shadow: 1px 1px 2px #ff69b4;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .caixa-contador:hover {
-      transform: scale(1.08);
+      font-family: 'Segoe UI Black', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .galeria {
@@ -53,15 +37,19 @@
       flex-wrap: wrap;
       gap: 20px;
       margin-top: 30px;
+      z-index: 1;
+      position: relative;
     }
 
     .galeria img {
       width: 180px;
+      height: auto;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .mensagem, .mensagem-texto-longo {
+      color: #fff;
       font-family: 'Segoe UI', sans-serif;
       text-shadow: 1px 1px 4px #ff69b4;
       padding: 0 20px;
@@ -80,6 +68,10 @@
       font-size: 1.2em;
       line-height: 1.6em;
       text-align: justify;
+    }
+
+    .espaco-final {
+      height: 60px;
     }
 
     .coraçao {
@@ -125,21 +117,16 @@
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-
-    .espaco-final {
-      height: 60px;
-    }
   </style>
 </head>
 <body>
   <h1>Junior e Elaine</h1>
-
   <div id="contador"></div>
 
   <div class="galeria">
     <img src="img/foto1.jpeg" alt="Foto 1" />
-    <img src="img/foto2.jpeg" alt="Foto 2" />
     <img src="img/foto3.jpeg" alt="Foto 3" />
+    <img src="img/foto2.jpeg" alt="Foto 2" />
   </div>
 
   <div class="mensagem">
@@ -158,52 +145,38 @@
     Eu te amo. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
   </div>
 
+  <div class="espaco-final"></div>
+
+  <!-- Videoclipe -->
   <video controls>
     <source src="video.mp4" type="video/mp4" />
     Seu navegador não suporta vídeo.
   </video>
 
-  <div class="espaco-final"></div>
-
-  <!-- Música -->
+  <!-- Botão de música -->
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
   </audio>
 
   <script>
-    const inicio = new Date("2024-02-13T00:00:00");
+    const inicio = new Date("2024-02-13T00:00:00").getTime();
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
     let tocando = false;
 
     function atualizarContador() {
-      const agora = new Date();
-      let anos = agora.getFullYear() - inicio.getFullYear();
-      let meses = agora.getMonth() - inicio.getMonth();
-      let dias = agora.getDate() - inicio.getDate();
-      let horas = agora.getHours() - inicio.getHours();
-      let minutos = agora.getMinutes() - inicio.getMinutes();
-      let segundos = agora.getSeconds() - inicio.getSeconds();
+      const agora = new Date().getTime();
+      const diferenca = agora - inicio;
 
-      if (segundos < 0) { segundos += 60; minutos--; }
-      if (minutos < 0) { minutos += 60; horas--; }
-      if (horas < 0) { horas += 24; dias--; }
-      if (dias < 0) {
-        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
-        dias += mesAnterior.getDate();
-        meses--;
-      }
-      if (meses < 0) { meses += 12; anos--; }
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-      document.getElementById("contador").innerHTML = `
-        <div class="caixa-contador"><strong>${anos}</strong> ano</div>
-        <div class="caixa-contador"><strong>${meses}</strong> meses</div>
-        <div class="caixa-contador"><strong>${dias}</strong> dias</div>
-        <div class="caixa-contador"><strong>${horas}</strong> horas</div>
-        <div class="caixa-contador"><strong>${minutos}</strong> minutos</div>
-        <div class="caixa-contador"><strong>${segundos}</strong> segundos</div>
-      `;
+      document.getElementById("contador").innerHTML =
+        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -215,7 +188,10 @@
       cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
-      setTimeout(() => cora.remove(), 5000);
+
+      setTimeout(() => {
+        cora.remove();
+      }, 5000);
     }
 
     setInterval(criarCoracao, 300);
