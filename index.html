@@ -1,12 +1,163 @@
-<!-- ...todo o conteúdo anterior permanece o mesmo -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junior & Elaine</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      text-align: center;
+      color: #fff;
+    }
 
-  <!-- Espaço adicional ao final -->
-  <div class="espaco-extra"></div>
+    h1 {
+      font-size: 3.5em;
+      margin-top: 40px;
+      font-family: 'Monotype Corsiva', cursive;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
+    }
 
-  <!-- Contador regressivo até 16 de junho às 21h -->
-  <div id="contadorRegressivo" style="font-size: 1.8em; margin-bottom: 40px; font-weight: bold; color: #fff; text-shadow: 1px 1px 3px #ff69b4;">
-    Contagem regressiva...
+    #contador, #contadorRegressivo {
+      font-size: 2em;
+      margin: 20px 0;
+      color: #fff;
+      font-family: 'Segoe UI Black', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .galeria {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .galeria img {
+      width: 180px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .mensagem, .mensagem-texto-longo {
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-shadow: 1px 1px 4px #ff69b4;
+      padding: 0 20px;
+    }
+
+    .mensagem {
+      margin-top: 30px;
+      font-size: 1.5em;
+    }
+
+    .mensagem-texto-longo {
+      margin-top: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      text-align: justify;
+    }
+
+    .espaco-final {
+      height: 60px;
+    }
+
+    .coraçao {
+      position: fixed;
+      top: -50px;
+      color: red;
+      animation: cair 5s linear infinite;
+      font-size: 2em;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .botao-musica {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 2;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #ff69b4;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s;
+    }
+
+    .botao-musica:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    video {
+      margin-top: 40px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    #contadorRegressivo {
+      margin-top: 40px;
+      font-size: 1.6em;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Junior e Elaine</h1>
+  <div id="contador"></div>
+
+  <div class="galeria">
+    <img src="img/foto1.jpeg" alt="Foto 1" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
+    <img src="img/foto2.jpeg" alt="Foto 2" />
   </div>
+
+  <div class="mensagem">
+    "Cada momento com você é uma nova chance de sorrir. Te amo! 💖"
+  </div>
+
+  <div class="mensagem-texto-longo">
+    Já faz um ano e dois meses desde que nos reencontramos e, sinceramente, parece que foi ontem que nossos olhares se cruzaram de novo. Eu nem imaginava que o destino tinha algo tão especial guardado pra gente, mas olha só onde estamos: vivendo momentos inesquecíveis e construindo uma história de amor que eu nunca pensei ser possível.<br><br>
+    Sou grato por cada sorriso, cada risada, cada aventura e também pelos momentos de calma que dividimos. Você trouxe uma luz nova pra minha vida, uma alegria leve e sincera que eu nem sabia que precisava. Com você, tudo faz mais sentido. <br><br>
+    Sou grato por ter te reencontrado. Por ter tido a chance de conhecer você de novo, de uma forma mais profunda. Cada conversa, cada desafio, cada silêncio entre nós me ensinou algo. Me fez crescer. Me fez entender melhor quem eu sou e o que eu quero da vida — e o que eu quero é você. <br><br>
+    Hoje, com um ano e dois meses de história, eu tenho certeza: quero passar o resto da minha vida ao seu lado. Quero casar com você, construir uma vida juntos, encher nossos dias de memórias que vamos guardar pra sempre. Quero acordar com você todo dia e saber que tenho ao meu lado alguém que me ama, me apoia e me faz sorrir mesmo nos dias difíceis. <br><br>
+    Eu te amo. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
+  </div>
+
+  <video controls>
+    <source src="video.mp4" type="video/mp4" />
+    Seu navegador não suporta vídeo.
+  </video>
+
+  <!-- Contador Regressivo -->
+  <div id="contadorRegressivo"></div>
+
+  <div class="espaco-final"></div>
 
   <!-- Botão de música -->
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
@@ -43,10 +194,7 @@
       cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
-
-      setTimeout(() => {
-        cora.remove();
-      }, 5000);
+      setTimeout(() => cora.remove(), 5000);
     }
 
     setInterval(criarCoracao, 300);
@@ -62,7 +210,7 @@
       tocando = !tocando;
     }
 
-    // Novo contador regressivo
+    // Contador regressivo para 16 de junho às 21h
     const destino = new Date("2025-06-16T21:00:00").getTime();
 
     function atualizarContadorRegressivo() {
