@@ -125,8 +125,8 @@
 
   <div class="galeria">
     <img src="img/foto1.jpeg" alt="Foto 1" />
-    <img src="img/foto3.jpeg" alt="Foto 3" />
     <img src="img/foto2.jpeg" alt="Foto 2" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
   </div>
 
   <div class="mensagem">
@@ -161,22 +161,48 @@
   </audio>
 
   <script>
-    const inicio = new Date("2024-02-13T00:00:00").getTime();
+    const inicio = new Date("2024-02-13T00:00:00");
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
     let tocando = false;
 
     function atualizarContador() {
-      const agora = new Date().getTime();
-      const diferenca = agora - inicio;
+      const agora = new Date();
+      let anos = agora.getFullYear() - inicio.getFullYear();
+      let meses = agora.getMonth() - inicio.getMonth();
+      let dias = agora.getDate() - inicio.getDate();
+      let horas = agora.getHours() - inicio.getHours();
+      let minutos = agora.getMinutes() - inicio.getMinutes();
+      let segundos = agora.getSeconds() - inicio.getSeconds();
 
-      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+      if (segundos < 0) {
+        segundos += 60;
+        minutos--;
+      }
+
+      if (minutos < 0) {
+        minutos += 60;
+        horas--;
+      }
+
+      if (horas < 0) {
+        horas += 24;
+        dias--;
+      }
+
+      if (dias < 0) {
+        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+        dias += mesAnterior.getDate();
+        meses--;
+      }
+
+      if (meses < 0) {
+        meses += 12;
+        anos--;
+      }
 
       document.getElementById("contador").innerHTML =
-        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+        `Juntos há ${anos} ano(s), ${meses} mês(es), ${dias} dia(s), ${horas} hora(s), ${minutos} minuto(s) e ${segundos} segundo(s) ❤`;
     }
 
     setInterval(atualizarContador, 1000);
