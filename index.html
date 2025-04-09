@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine</title>
   <style>
     body {
@@ -71,7 +71,7 @@
     }
 
     .espaco-final {
-      height: 100px;
+      height: 60px;
     }
 
     .coraçao {
@@ -83,41 +83,49 @@
       z-index: 0;
     }
 
+    .botao-musica {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 8px 14px;
+      font-size: 0.9em;
+      border-radius: 12px;
+      cursor: pointer;
+      z-index: 2;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #ff69b4;
+      backdrop-filter: blur(5px);
+    }
+
+    video {
+      margin: 40px auto 60px auto;
+      display: block;
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
     @keyframes cair {
       to {
         transform: translateY(110vh);
       }
     }
-
-    /* Botão de música */
-    #botao-musica {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      background-color: #ff69b4;
-      border: none;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 15px;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-      z-index: 10;
-    }
-
-    #botao-musica:hover {
-      background-color: #ff85c1;
-    }
   </style>
 </head>
 <body>
   <h1>Junior e Elaine</h1>
+
+  <button class="botao-musica" onclick="toggleMusica()">▶ Tocar Música</button>
+
   <div id="contador"></div>
 
   <div class="galeria">
     <img src="img/foto1.jpeg" alt="Foto 1" />
-    <img src="img/foto3.jpeg" alt="Foto 3" />
     <img src="img/foto2.jpeg" alt="Foto 2" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
   </div>
 
   <div class="mensagem">
@@ -138,10 +146,15 @@
 
   <div class="espaco-final"></div>
 
-  <!-- Botão e áudio -->
-  <button id="botao-musica">▶️</button>
-  <audio id="musica" loop>
-    <source src="Musica.mp3" type="audio/mpeg" />
+  <!-- VÍDEO LOCAL -->
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+    Seu navegador não suporta a reprodução de vídeo.
+  </video>
+
+  <!-- ÁUDIO -->
+  <audio id="audio" loop>
+    <source src="Musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
@@ -157,8 +170,7 @@
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-      document.getElementById("contador").innerHTML = 
-        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -171,26 +183,26 @@
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
 
-      setTimeout(() => cora.remove(), 5000);
+      setTimeout(() => {
+        cora.remove();
+      }, 5000);
     }
 
     setInterval(criarCoracao, 300);
 
-    // Botão de música
-    const musica = document.getElementById("musica");
-    const botao = document.getElementById("botao-musica");
-    let tocando = false;
+    // Controle da música
+    const audio = document.getElementById("audio");
+    const botao = document.querySelector(".botao-musica");
 
-    botao.addEventListener("click", () => {
-      if (tocando) {
-        musica.pause();
-        botao.textContent = "▶️";
+    function toggleMusica() {
+      if (audio.paused) {
+        audio.play();
+        botao.textContent = "❚❚ Pausar Música";
       } else {
-        musica.play();
-        botao.textContent = "⏸️";
+        audio.pause();
+        botao.textContent = "▶ Tocar Música";
       }
-      tocando = !tocando;
-    });
+    }
   </script>
 </body>
 </html>
