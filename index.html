@@ -96,12 +96,12 @@
       background-color: rgba(255, 255, 255, 0.15);
       border: 1px solid #fff;
       color: #fff;
-      padding: 4px 10px;
-      font-size: 0.75em;
+      padding: 4px 8px;
+      font-size: 1em;
       border-radius: 8px;
       cursor: pointer;
       z-index: 2;
-      font-weight: 500;
+      font-weight: bold;
       text-shadow: 1px 1px 2px #ff69b4;
       backdrop-filter: blur(4px);
       transition: background 0.3s;
@@ -154,7 +154,7 @@
   </video>
 
   <!-- Botão de música -->
-  <button class="botao-musica" onclick="toggleMusica()">🎵 </button>
+  <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
@@ -199,10 +199,10 @@
     function toggleMusica() {
       if (tocando) {
         musica.pause();
-        botaoMusica.textContent = "🎵 Tocar música";
+        botaoMusica.textContent = "▶️";
       } else {
         musica.play();
-        botaoMusica.textContent = "⏸️ Pausar música";
+        botaoMusica.textContent = "⏸️";
       }
       tocando = !tocando;
     }
