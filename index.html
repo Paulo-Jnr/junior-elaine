@@ -48,7 +48,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .mensagem, .mensagem-secundaria, .mensagem-texto-longo {
+    .mensagem, .mensagem-texto-longo {
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       text-shadow: 1px 1px 4px #ff69b4;
@@ -83,43 +83,44 @@
       z-index: 0;
     }
 
-    .botao-musica {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background-color: rgba(255, 255, 255, 0.2);
-      border: 2px solid #fff;
-      color: #fff;
-      padding: 8px 14px;
-      font-size: 0.9em;
-      border-radius: 12px;
-      cursor: pointer;
-      z-index: 2;
-      font-weight: bold;
-      text-shadow: 1px 1px 3px #ff69b4;
-      backdrop-filter: blur(5px);
-    }
-
-    video {
-      margin: 40px auto 60px auto;
-      display: block;
-      max-width: 90%;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
     @keyframes cair {
       to {
         transform: translateY(110vh);
       }
     }
+
+    .botao-musica {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 4px 10px;
+      font-size: 0.75em;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 2;
+      font-weight: 500;
+      text-shadow: 1px 1px 2px #ff69b4;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s;
+    }
+
+    .botao-musica:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    video {
+      margin-top: 40px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
   <h1>Junior e Elaine</h1>
-
-  <button class="botao-musica" onclick="toggleMusica()">▶ Tocar Música</button>
-
   <div id="contador"></div>
 
   <div class="galeria">
@@ -146,20 +147,24 @@
 
   <div class="espaco-final"></div>
 
-  <!-- VÍDEO LOCAL -->
+  <!-- Videoclipe -->
   <video controls>
-    <source src="video.mp4" type="video/mp4">
-    Seu navegador não suporta a reprodução de vídeo.
+    <source src="video.mp4" type="video/mp4" />
+    Seu navegador não suporta vídeo.
   </video>
 
-  <!-- ÁUDIO -->
-  <audio id="audio" loop>
-    <source src="Musica.mp3" type="audio/mpeg">
+  <!-- Botão de música -->
+  <button class="botao-musica" onclick="toggleMusica()">🎵 Tocar música</button>
+  <audio id="musica" loop>
+    <source src="Musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
 
   <script>
     const inicio = new Date("2024-02-13T00:00:00").getTime();
+    const musica = document.getElementById("musica");
+    const botaoMusica = document.querySelector(".botao-musica");
+    let tocando = false;
 
     function atualizarContador() {
       const agora = new Date().getTime();
@@ -170,7 +175,8 @@
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+      document.getElementById("contador").innerHTML =
+        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -190,18 +196,15 @@
 
     setInterval(criarCoracao, 300);
 
-    // Controle da música
-    const audio = document.getElementById("audio");
-    const botao = document.querySelector(".botao-musica");
-
     function toggleMusica() {
-      if (audio.paused) {
-        audio.play();
-        botao.textContent = "❚❚ Pausar Música";
+      if (tocando) {
+        musica.pause();
+        botaoMusica.textContent = "🎵 Tocar música";
       } else {
-        audio.pause();
-        botao.textContent = "▶ Tocar Música";
+        musica.play();
+        botaoMusica.textContent = "⏸️ Pausar música";
       }
+      tocando = !tocando;
     }
   </script>
 </body>
