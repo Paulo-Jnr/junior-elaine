@@ -118,7 +118,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    /* Flip card contador regressivo */
+    /* Contador Regressivo com Flip Cards (sem animação) */
     .contador-regressivo {
       display: flex;
       justify-content: center;
@@ -129,22 +129,22 @@
     .flip {
       background-color: #fff;
       color: #ff69b4;
-      padding: 20px;
+      padding: 20px 10px;
       border-radius: 10px;
       width: 70px;
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: bold;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      animation: flip 1s ease-in-out infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
 
-    @keyframes flip {
-      from {
-        transform: rotateX(0deg);
-      }
-      to {
-        transform: rotateX(180deg);
-      }
+    .flip span {
+      font-size: 0.5em;
+      margin-top: 5px;
+      color: #999;
     }
   </style>
 </head>
@@ -178,12 +178,12 @@
     Seu navegador não suporta vídeo.
   </video>
 
-  <!-- Contador regressivo -->
+  <!-- Contador regressivo abaixo do vídeo -->
   <div class="contador-regressivo">
-    <div class="flip" id="dias"></div>
-    <div class="flip" id="horas"></div>
-    <div class="flip" id="minutos"></div>
-    <div class="flip" id="segundos"></div>
+    <div class="flip"><div id="dias"></div><span>Dias</span></div>
+    <div class="flip"><div id="horas"></div><span>Horas</span></div>
+    <div class="flip"><div id="minutos"></div><span>Minutos</span></div>
+    <div class="flip"><div id="segundos"></div><span>Segundos</span></div>
   </div>
 
   <!-- Botão de música -->
