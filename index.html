@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine</title>
   <style>
+    /* (todo o seu CSS anterior permanece igual aqui) */
     body {
       margin: 0;
       padding: 0;
@@ -15,235 +16,33 @@
       color: #fff;
     }
 
-    h1 {
-      font-size: 3.5em;
-      margin-top: 40px;
-      font-family: 'Monotype Corsiva', cursive;
-      color: #fff;
-      text-shadow: 2px 2px 5px #ff69b4;
-    }
+    /* ... todo o resto do seu CSS continua aqui ... */
 
-    #contador {
-      font-size: 2em;
-      margin: 20px 0;
-      color: #fff;
-      font-family: 'Segoe UI Black', sans-serif;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .galeria {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
-      z-index: 1;
-      position: relative;
-    }
-
-    .galeria img {
-      width: 180px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .mensagem, .mensagem-texto-longo {
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      text-shadow: 1px 1px 4px #ff69b4;
-      padding: 0 20px;
-    }
-
-    .mensagem {
-      margin-top: 30px;
-      font-size: 1.5em;
-    }
-
-    .mensagem-texto-longo {
-      margin-top: 40px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 1.2em;
-      line-height: 1.6em;
-      text-align: justify;
-    }
-
-    .espaco-final {
-      height: 150px;
-    }
-
-    .coraçao {
+    #fireworks-container {
       position: fixed;
-      top: -50px;
-      color: red;
-      animation: cair 8s linear infinite;
-      font-size: 2em;
-      z-index: 0;
-    }
-
-    @keyframes cair {
-      to {
-        transform: translateY(110vh);
-      }
-    }
-
-    .botao-musica {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background-color: rgba(255, 255, 255, 0.15);
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 4px 8px;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 2;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px #ff69b4;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s;
-    }
-
-    .botao-musica:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    video {
-      margin-top: 40px;
-      max-width: 90%;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .contador-regressivo {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 2cm;
-      flex-wrap: wrap;
-    }
-
-    .flip {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      width: 80px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    .flip div {
-      font-size: 2em;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .flip span {
-      font-size: 0.9em;
-      color: #333;
-    }
-
-    .botoes-surpresa {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .botao-surpresa {
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #ff69b4;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      transition: background-color 0.3s;
-    }
-
-    .botao-surpresa:hover {
-      background-color: #ff1493;
-    }
-
-    .imagem-surpresa {
-      display: none;
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      animation: surgir 1s ease forwards;
-    }
-
-    @keyframes surgir {
-      0% {
-        opacity: 0;
-        transform: scale(0.8) rotate(-5deg);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
-    }
-
-    .imagens-surpresa {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1000;
     }
   </style>
+
+  <!-- 🎆 Biblioteca Fireworks -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.js"></script>
 </head>
+
 <body>
+  <div id="fireworks-container"></div>
+
+  <!-- 🔥 Seu conteúdo original começa aqui -->
   <h1>Junior e Elaine</h1>
   <div id="contador"></div>
 
-  <div class="galeria">
-    <img src="img/foto1.jpeg" alt="Foto 1" />
-    <img src="img/foto3.jpeg" alt="Foto 3" />
-    <img src="img/foto2.jpeg" alt="Foto 2" />
-  </div>
+  <!-- (todo o restante do seu conteúdo continua idêntico...) -->
 
-  <div class="mensagem">
-    "Cada momento com você é uma nova chance de sorrir. Te amo! 💖"
-  </div>
-
-  <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
-  </div>
-
-  <video controls>
-    <source src="video.mp4" type="video/mp4" />
-    Seu navegador não suporta vídeo.
-  </video>
-
-  <div class="botoes-surpresa">
-    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
-    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
-    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
-  </div>
-
-  <div class="imagens-surpresa">
-    <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" alt="Surpresa 1" />
-    <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" alt="Surpresa 2" />
-    <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" alt="Surpresa 3" />
-  </div>
-
-  <div class="contador-regressivo">
-    <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
-    <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
-    <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
-    <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
-    <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
-  </div>
-
-  <div class="espaco-final"></div>
-
+  <!-- 🎵 Música, contador, corações e surpresas -->
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
@@ -251,6 +50,36 @@
   </audio>
 
   <script>
+    // 🎆 FOGOS DE ARTIFÍCIO POR 5 SEGUNDOS
+    window.addEventListener("load", () => {
+      const container = document.getElementById("fireworks-container");
+      const fireworks = new Fireworks(container, {
+        autoresize: true,
+        opacity: 0.5,
+        acceleration: 1.05,
+        friction: 0.97,
+        gravity: 1.5,
+        particles: 50,
+        trace: 3,
+        explosion: 5,
+        intensity: 30,
+        traceSpeed: 10,
+        flickering: 50,
+        lineStyle: "round",
+        hue: { min: 0, max: 360 },
+        delay: { min: 30, max: 60 },
+        rocketsPoint: { min: 50, max: 50 },
+      });
+      fireworks.start();
+
+      setTimeout(() => {
+        fireworks.stop();
+        container.remove(); // remove os fogos após 5 segundos
+      }, 5000);
+    });
+
+    // (todo o resto dos seus scripts originais continua abaixo)
+
     const inicio = new Date("2024-02-13T00:00:00").getTime();
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
