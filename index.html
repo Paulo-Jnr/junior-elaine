@@ -112,7 +112,6 @@
     }
 
     video {
-      margin-top: 40px;
       max-width: 90%;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -214,13 +213,28 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico...
   </div>
 
-  <video controls>
-    <source src="video.mp4" type="video/mp4" />
-    Seu navegador não suporta vídeo.
-  </video>
+  <!-- Bloco de vídeo + balões -->
+  <div style="display: flex; justify-content: center; align-items: flex-start; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
+    <video controls>
+      <source src="video.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo.
+    </video>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+      <button onclick="mostrarBalao('balao1')" style="font-size: 2em; background: none; border: none; cursor: pointer;">🎈</button>
+      <div id="balao1" style="display:none;">
+        <img src="img/balao1.jpg" alt="Balao 1" style="max-width: 180px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+      </div>
+
+      <button onclick="mostrarBalao('balao2')" style="font-size: 2em; background: none; border: none; cursor: pointer;">🎈</button>
+      <div id="balao2" style="display:none;">
+        <img src="img/balao2.jpg" alt="Balao 2" style="max-width: 180px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+      </div>
+    </div>
+  </div>
 
   <div class="botoes-surpresa">
     <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
@@ -259,14 +273,11 @@
     function atualizarContador() {
       const agora = new Date().getTime();
       const diferenca = agora - inicio;
-
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-      document.getElementById("contador").innerHTML =
-        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -293,12 +304,10 @@
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
-
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
-
       document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
@@ -308,6 +317,11 @@
     setInterval(atualizarRegressivo, 1000);
 
     function toggleSurpresa(id) {
+      const img = document.getElementById(id);
+      img.style.display = (img.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function mostrarBalao(id) {
       const img = document.getElementById(id);
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
