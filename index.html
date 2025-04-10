@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine</title>
   <style>
     body {
@@ -78,7 +78,7 @@
       position: fixed;
       top: -50px;
       color: red;
-      animation: cair 7s linear infinite;
+      animation: cair 8s linear infinite;
       font-size: 2em;
       z-index: 0;
     }
@@ -146,41 +146,50 @@
       color: #333;
     }
 
-    .surpresa-container {
+    /* Botões surpresa */
+    .botoes-surpresa {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       margin-top: 30px;
       flex-wrap: wrap;
-    }
-
-    .surpresa-imagem {
-      width: 150px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      animation: aparecer 0.6s ease-in-out;
-    }
-
-    @keyframes aparecer {
-      from { opacity: 0; transform: scale(0.5); }
-      to { opacity: 1; transform: scale(1); }
     }
 
     .botao-surpresa {
       padding: 10px 20px;
       font-size: 1em;
       background-color: #ff69b4;
+      color: #fff;
       border: none;
-      border-radius: 10px;
-      color: white;
+      border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background 0.3s;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
     }
 
     .botao-surpresa:hover {
-      background-color: #ff85c1;
+      background-color: #ff1493;
+    }
+
+    .imagem-surpresa {
+      display: none;
+      margin: 20px auto;
+      max-width: 200px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      animation: surgir 1s ease forwards;
+    }
+
+    @keyframes surgir {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
     }
   </style>
 </head>
@@ -199,7 +208,7 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+  Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
   </div>
 
   <video controls>
@@ -207,16 +216,18 @@
     Seu navegador não suporta vídeo.
   </video>
 
-  <div class="surpresa-container">
-    <button class="botao-surpresa" onclick="toggleImagem('img1')">🎁 Surpresa 1</button>
-    <button class="botao-surpresa" onclick="toggleImagem('img2')">🎁 Surpresa 2</button>
-    <button class="botao-surpresa" onclick="toggleImagem('img3')">🎁 Surpresa 3</button>
+  <!-- Botões surpresa -->
+  <div class="botoes-surpresa">
+    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
   </div>
 
-  <div class="surpresa-container" id="container-imagens">
-    <img id="img1" src="img/surpresa1.jpg" class="surpresa-imagem" style="display: none;">
-    <img id="img2" src="img/surpresa2.jpg" class="surpresa-imagem" style="display: none;">
-    <img id="img3" src="img/surpresa3.jpg" class="surpresa-imagem" style="display: none;">
+  <!-- Imagens surpresa -->
+  <div>
+    <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpg" alt="Surpresa 1" />
+    <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpg" alt="Surpresa 2" />
+    <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpg" alt="Surpresa 3" />
   </div>
 
   <div class="contador-regressivo">
@@ -244,10 +255,12 @@
     function atualizarContador() {
       const agora = new Date().getTime();
       const diferenca = agora - inicio;
+
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
       document.getElementById("contador").innerHTML =
         `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
@@ -258,10 +271,10 @@
       const cora = document.createElement("div");
       cora.classList.add("coraçao");
       cora.style.left = Math.random() * 100 + "vw";
-      cora.style.animationDuration = (Math.random() * 3 + 4) + "s";
+      cora.style.animationDuration = (Math.random() * 4 + 6) + "s";
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
-      setTimeout(() => cora.remove(), 7000);
+      setTimeout(() => cora.remove(), 10000);
     }
 
     setInterval(criarCoracao, 400);
@@ -276,10 +289,12 @@
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
+
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
       document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
@@ -288,9 +303,9 @@
 
     setInterval(atualizarRegressivo, 1000);
 
-    function toggleImagem(id) {
+    function toggleSurpresa(id) {
       const img = document.getElementById(id);
-      img.style.display = img.style.display === 'none' ? 'block' : 'none';
+      img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
   </script>
 </body>
