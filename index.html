@@ -78,9 +78,10 @@
       position: fixed;
       top: -50px;
       color: red;
-      animation: cair 5s linear infinite;
+      animation: cair 10s linear infinite;
       font-size: 2em;
       z-index: 0;
+      opacity: 0.7;
     }
 
     @keyframes cair {
@@ -219,16 +220,17 @@
       const cora = document.createElement("div");
       cora.classList.add("coraçao");
       cora.style.left = Math.random() * 100 + "vw";
-      cora.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      cora.style.fontSize = (Math.random() * 1.5 + 1.5) + "em";
+      cora.style.animationDuration = (Math.random() * 10 + 10) + "s"; // agora entre 10 e 20s
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
 
       setTimeout(() => {
         cora.remove();
-      }, 5000);
+      }, 20000); // bate com a duração da animação
     }
 
-    setInterval(criarCoracao, 300);
+    setInterval(criarCoracao, 400);
 
     function toggleMusica() {
       if (tocando) {
