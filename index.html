@@ -5,28 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine 💑</title>
   <style>
+    :root {
+      --bg-gradient: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      --text-color: #fff;
+      --box-color: #fff;
+      --text-shadow: 2px 2px 5px #ff69b4;
+    }
+
     body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      background: var(--bg-gradient);
       text-align: center;
-      color: #fff;
+      color: var(--text-color);
+      transition: all 0.4s ease;
     }
 
     h1 {
       font-size: 3.5em;
       margin-top: 40px;
       font-family: 'Monotype Corsiva', cursive;
-      color: #fff;
-      text-shadow: 2px 2px 5px #ff69b4;
+      color: var(--text-color);
+      text-shadow: var(--text-shadow);
     }
 
     #contador {
       font-size: 2em;
       margin: 20px 0;
-      color: #fff;
       font-family: 'Segoe UI Black', sans-serif;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
@@ -49,7 +56,6 @@
     }
 
     .mensagem, .mensagem-texto-longo {
-      color: #fff;
       font-family: 'Segoe UI', sans-serif;
       text-shadow: 1px 1px 4px #ff69b4;
       padding: 0 20px;
@@ -89,10 +95,9 @@
       }
     }
 
-    .botao-musica {
+    .botao-musica, .botao-tema {
       position: fixed;
       top: 15px;
-      right: 15px;
       background-color: rgba(255, 255, 255, 0.15);
       border: 1px solid #fff;
       color: #fff;
@@ -107,13 +112,20 @@
       transition: background 0.3s;
     }
 
-    .botao-musica:hover {
+    .botao-musica:hover, .botao-tema:hover {
       background-color: rgba(255, 255, 255, 0.3);
     }
 
+    .botao-musica {
+      right: 15px;
+    }
+
+    .botao-tema {
+      left: 15px;
+    }
+
     video {
-      margin-top: 40px;
-      max-width: 90%;
+      max-width: 100%;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
@@ -127,23 +139,22 @@
     }
 
     .flip {
-      background: #fff;
+      background: var(--box-color);
       padding: 20px;
       border-radius: 10px;
       text-align: center;
       width: 80px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      color: #333;
     }
 
     .flip div {
       font-size: 2em;
       font-weight: bold;
-      color: #333;
     }
 
     .flip span {
       font-size: 0.9em;
-      color: #333;
     }
 
     .botoes-surpresa {
@@ -180,14 +191,8 @@
     }
 
     @keyframes surgir {
-      0% {
-        opacity: 0;
-        transform: scale(0.8) rotate(-5deg);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
+      0% { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
     }
 
     .imagens-surpresa {
@@ -196,6 +201,62 @@
       gap: 20px;
       flex-wrap: wrap;
       margin-top: 20px;
+    }
+
+    .video-baloes-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .baloes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .balao {
+      width: 70px;
+      height: 70px;
+      background-color: var(--box-color);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .balao:hover {
+      transform: scale(1.1);
+    }
+
+    .balao img {
+      display: none;
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      .video-baloes-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    body.dark {
+      --bg-gradient: linear-gradient(to top, #1e1e1e 0%, #333333 100%);
+      --text-color: #e0e0e0;
+      --box-color: #444;
+      --text-shadow: none;
     }
   </style>
 </head>
@@ -214,13 +275,20 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor...
   </div>
 
-  <video controls>
-    <source src="video.mp4" type="video/mp4" />
-    Seu navegador não suporta vídeo.
-  </video>
+  <div class="video-baloes-container">
+    <video controls>
+      <source src="video.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo.
+    </video>
+    <div class="baloes">
+      <div class="balao" onclick="toggleBalao(this)">🎈<img src="img/surpresa1.jpeg" alt="Surpresa 1"></div>
+      <div class="balao" onclick="toggleBalao(this)">🎈<img src="img/surpresa2.jpeg" alt="Surpresa 2"></div>
+      <div class="balao" onclick="toggleBalao(this)">🎈<img src="img/surpresa3.jpeg" alt="Surpresa 3"></div>
+    </div>
+  </div>
 
   <div class="botoes-surpresa">
     <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
@@ -244,29 +312,28 @@
 
   <div class="espaco-final"></div>
 
+  <button class="botao-tema" onclick="toggleTema()">🌙</button>
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
+
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
-    Seu navegador não suporta áudio.
   </audio>
 
   <script>
     const inicio = new Date("2024-02-13T00:00:00").getTime();
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
+    const botaoTema = document.querySelector(".botao-tema");
     let tocando = false;
 
     function atualizarContador() {
       const agora = new Date().getTime();
       const diferenca = agora - inicio;
-
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-      document.getElementById("contador").innerHTML =
-        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -293,12 +360,10 @@
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
-
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
-
       document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
@@ -310,6 +375,16 @@
     function toggleSurpresa(id) {
       const img = document.getElementById(id);
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function toggleBalao(element) {
+      const img = element.querySelector("img");
+      img.style.display = img.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleTema() {
+      document.body.classList.toggle("dark");
+      botaoTema.textContent = document.body.classList.contains("dark") ? "🌞" : "🌙";
     }
   </script>
 </body>
