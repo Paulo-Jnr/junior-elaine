@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine</title>
-
-  <!-- 🎆 Biblioteca Fireworks -->
-  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.1.0/dist/index.umd.min.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -20,140 +16,190 @@
     }
 
     h1 {
-      margin-top: 30px;
-      font-size: 3em;
+      font-size: 3.5em;
+      margin-top: 40px;
+      font-family: 'Monotype Corsiva', cursive;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
     }
 
     #contador {
-      margin-top: 10px;
-      font-size: 1.5em;
-      font-weight: bold;
+      font-size: 2em;
+      margin: 20px 0;
+      color: #fff;
+      font-family: 'Segoe UI Black', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .galeria {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      z-index: 1;
+      position: relative;
     }
 
     .galeria img {
-      width: 200px;
+      width: 180px;
       height: auto;
-      margin: 10px;
-      border-radius: 15px;
+      border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .mensagem, .mensagem-texto-longo {
-      margin: 30px;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-shadow: 1px 1px 4px #ff69b4;
+      padding: 0 20px;
+    }
+
+    .mensagem {
+      margin-top: 30px;
+      font-size: 1.5em;
+    }
+
+    .mensagem-texto-longo {
+      margin-top: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
       font-size: 1.2em;
-      color: #222;
-      background: rgba(255,255,255,0.8);
-      border-radius: 10px;
-      padding: 20px;
+      line-height: 1.6em;
+      text-align: justify;
+    }
+
+    .espaco-final {
+      height: 150px;
+    }
+
+    .coraçao {
+      position: fixed;
+      top: -50px;
+      color: red;
+      animation: cair 8s linear infinite;
+      font-size: 2em;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .botao-musica {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 2;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #ff69b4;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s;
+    }
+
+    .botao-musica:hover {
+      background-color: rgba(255, 255, 255, 0.3);
     }
 
     video {
-      width: 80%;
-      max-width: 600px;
-      margin-top: 30px;
-      border-radius: 10px;
+      margin-top: 40px;
+      max-width: 90%;
+      border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .botoes-surpresa {
-      margin: 20px;
-    }
-
-    .botao-surpresa {
-      padding: 10px 20px;
-      font-size: 1em;
-      margin: 5px;
-      border: none;
-      border-radius: 10px;
-      background-color: #ff69b4;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .botao-surpresa:hover {
-      background-color: #ff1493;
-    }
-
-    .imagens-surpresa {
-      margin: 20px;
-    }
-
-    .imagem-surpresa {
-      display: none;
-      width: 200px;
-      margin: 10px;
-      border-radius: 12px;
     }
 
     .contador-regressivo {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-top: 40px;
+      margin-top: 2cm;
+      flex-wrap: wrap;
     }
 
     .flip {
-      background-color: #fff;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .flip div {
+      font-size: 2em;
+      font-weight: bold;
       color: #333;
-      padding: 15px;
-      border-radius: 12px;
-      font-size: 1.2em;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    .espaco-final {
-      height: 50px;
+    .flip span {
+      font-size: 0.9em;
+      color: #333;
     }
 
-    .botao-musica {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #00bcd4;
+    .botoes-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .botao-surpresa {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff69b4;
       color: #fff;
       border: none;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 1.5em;
+      border-radius: 12px;
       cursor: pointer;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
     }
 
-    .coraçao {
-      position: absolute;
-      animation: subir 10s linear infinite;
-      font-size: 24px;
+    .botao-surpresa:hover {
+      background-color: #ff1493;
     }
 
-    @keyframes subir {
+    .imagem-surpresa {
+      display: none;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      animation: surgir 1s ease forwards;
+    }
+
+    @keyframes surgir {
       0% {
-        bottom: 0;
-        opacity: 1;
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
       }
       100% {
-        bottom: 100vh;
-        opacity: 0;
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
       }
     }
 
-    #fireworks-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 10000;
-      pointer-events: none;
+    .imagens-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
   </style>
 </head>
-
 <body>
-  <!-- Fogos de artifício -->
-  <div id="fireworks-container"></div>
-
   <h1>Junior e Elaine</h1>
   <div id="contador"></div>
 
@@ -168,7 +214,7 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses... e a cada dia que passa tenho mais certeza de que fomos feitos um para o outro. Obrigado por estar ao meu lado sempre, por sorrir comigo, por sonhar junto e por fazer da vida uma linda aventura.
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
   </div>
 
   <video controls>
@@ -193,6 +239,7 @@
     <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
     <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
     <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
+    <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
   </div>
 
   <div class="espaco-final"></div>
@@ -264,32 +311,6 @@
       const img = document.getElementById(id);
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
-
-    // 🎆 Fogos ao carregar
-    window.addEventListener("load", () => {
-      const container = document.getElementById("fireworks-container");
-      const fireworks = new Fireworks.default(container, {
-        autoresize: true,
-        opacity: 0.5,
-        acceleration: 1.05,
-        friction: 0.95,
-        gravity: 1.5,
-        particles: 80,
-        trace: 3,
-        explosion: 6,
-        intensity: 30,
-        flickering: 50,
-        hue: { min: 0, max: 360 },
-        delay: { min: 15, max: 30 },
-        rocketsPoint: 50,
-      });
-      fireworks.start();
-
-      setTimeout(() => {
-        fireworks.stop();
-        container.remove();
-      }, 5000);
-    });
   </script>
 </body>
 </html>
