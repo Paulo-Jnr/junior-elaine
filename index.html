@@ -78,7 +78,7 @@
       position: fixed;
       top: -50px;
       color: red;
-      animation: cair 8s linear infinite;
+      animation: cair 7s linear infinite;
       font-size: 2em;
       z-index: 0;
     }
@@ -146,34 +146,26 @@
       color: #333;
     }
 
-    /* Botão de Surpresa */
-    .botao-surpresa {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: rgba(255, 192, 203, 0.8);
+    .botao-surpresa-centro {
+      background-color: rgba(255, 105, 180, 0.9);
       border: none;
       color: #fff;
-      padding: 10px 16px;
-      font-size: 1.1em;
-      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 1.2em;
+      border-radius: 15px;
       cursor: pointer;
-      z-index: 3;
       font-weight: bold;
       text-shadow: 1px 1px 2px #c2185b;
-      backdrop-filter: blur(3px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: background 0.3s ease;
     }
 
-    .botao-surpresa:hover {
-      background-color: rgba(255, 105, 180, 0.9);
+    .botao-surpresa-centro:hover {
+      background-color: #ff69b4;
     }
 
     #surpresa {
-      position: fixed;
-      bottom: 80px;
-      right: 30px;
+      margin-top: 20px;
       background: rgba(255, 255, 255, 0.1);
       padding: 15px;
       border-radius: 20px;
@@ -183,26 +175,20 @@
       animation: aparecer 0.6s ease forwards;
       backdrop-filter: blur(4px);
       max-width: 240px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .imagem-surpresa {
-      width: 160px;
-      border-radius: 15px;
-      animation: pulsar 2s infinite;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
     }
 
     .texto-surpresa {
+      font-size: 1.1em;
       color: #fff;
-      font-size: 1.2em;
-      font-family: 'Segoe UI', sans-serif;
-      margin-top: 10px;
-      text-shadow: 1px 1px 3px #ff69b4;
-    }
-
-    @keyframes pulsar {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+      text-shadow: 1px 1px 2px #ff69b4;
     }
 
     @keyframes aparecer {
@@ -232,13 +218,22 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+    á faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
   </div>
 
   <video controls>
     <source src="video.mp4" type="video/mp4" />
     Seu navegador não suporta vídeo.
   </video>
+
+  <div style="margin-top: 30px;">
+    <button class="botao-surpresa-centro" onclick="mostrarSurpresa()">🎁 Surpresa</button>
+  </div>
+
+  <div id="surpresa">
+    <img src="img/surpresa.jpeg" alt="Surpresa" class="imagem-surpresa" />
+    <p class="texto-surpresa">Você é o melhor presente que a vida me deu! 💝</p>
+  </div>
 
   <div class="contador-regressivo">
     <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
@@ -249,13 +244,6 @@
   </div>
 
   <div class="espaco-final"></div>
-
-  <!-- Botão e Surpresa -->
-  <button class="botao-surpresa" onclick="mostrarSurpresa()">🎁 Surpresa</button>
-  <div id="surpresa">
-    <img src="img/surpresa.jpeg" alt="Surpresa" class="imagem-surpresa" />
-    <p class="texto-surpresa">Você é o melhor presente que a vida me deu! 💝</p>
-  </div>
 
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <audio id="musica" loop>
@@ -272,10 +260,12 @@
     function atualizarContador() {
       const agora = new Date().getTime();
       const diferenca = agora - inicio;
+
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
       document.getElementById("contador").innerHTML =
         `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
@@ -289,10 +279,13 @@
       cora.style.animationDuration = (Math.random() * 3 + 5) + "s";
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
-      setTimeout(() => cora.remove(), 8000);
+
+      setTimeout(() => {
+        cora.remove();
+      }, 8000);
     }
 
-    setInterval(criarCoracao, 400);
+    setInterval(criarCoracao, 300);
 
     function toggleMusica() {
       if (tocando) {
@@ -305,35 +298,34 @@
       tocando = !tocando;
     }
 
-    // Contador regressivo
     const destino = new Date("2025-06-16T21:00:00").getTime();
+
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
+
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
       document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
       document.getElementById("segundosR").textContent = segundos.toString().padStart(2, '0');
     }
+
     setInterval(atualizarRegressivo, 1000);
 
-    // Mostrar/Ocultar surpresa
     let surpresaVisivel = false;
     function mostrarSurpresa() {
-      const surpresa = document.getElementById("surpresa");
-      const botao = document.querySelector(".botao-surpresa");
-      surpresaVisivel = !surpresaVisivel;
+      const div = document.getElementById("surpresa");
       if (surpresaVisivel) {
-        surpresa.style.display = "block";
-        botao.textContent = "💖 Fechar";
+        div.style.display = "none";
       } else {
-        surpresa.style.display = "none";
-        botao.textContent = "🎁 Surpresa";
+        div.style.display = "block";
       }
+      surpresaVisivel = !surpresaVisivel;
     }
   </script>
 </body>
