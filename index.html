@@ -6,10 +6,10 @@
   <title>Junior & Elaine 💑</title>
   <style>
     :root {
-      --bg-gradient: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      --bg-light: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      --bg-dark: #1e1e2f;
       --text-color: #fff;
-      --box-color: #fff;
-      --text-shadow: 2px 2px 5px #ff69b4;
+      --box-color: #333;
     }
 
     body {
@@ -17,23 +17,28 @@
       padding: 0;
       overflow-x: hidden;
       font-family: 'Arial', sans-serif;
-      background: var(--bg-gradient);
+      background: var(--bg-light);
       text-align: center;
+      color: #fff;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
       color: var(--text-color);
-      transition: all 0.4s ease;
     }
 
     h1 {
       font-size: 3.5em;
       margin-top: 40px;
       font-family: 'Monotype Corsiva', cursive;
-      color: var(--text-color);
-      text-shadow: var(--text-shadow);
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
     }
 
     #contador {
       font-size: 2em;
       margin: 20px 0;
+      color: #fff;
       font-family: 'Segoe UI Black', sans-serif;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
@@ -56,6 +61,7 @@
     }
 
     .mensagem, .mensagem-texto-longo {
+      color: #fff;
       font-family: 'Segoe UI', sans-serif;
       text-shadow: 1px 1px 4px #ff69b4;
       padding: 0 20px;
@@ -95,7 +101,7 @@
       }
     }
 
-    .botao-musica, .botao-tema {
+    .botao-musica, .botao-noturno {
       position: fixed;
       top: 15px;
       background-color: rgba(255, 255, 255, 0.15);
@@ -112,7 +118,7 @@
       transition: background 0.3s;
     }
 
-    .botao-musica:hover, .botao-tema:hover {
+    .botao-musica:hover, .botao-noturno:hover {
       background-color: rgba(255, 255, 255, 0.3);
     }
 
@@ -120,15 +126,15 @@
       right: 15px;
     }
 
-    .botao-tema {
+    .botao-noturno {
       left: 15px;
     }
 
     video {
-      max-width: 100%;
+      margin-top: 40px;
+      max-width: 90%;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      margin-top: 40px;
     }
 
     .contador-regressivo {
@@ -140,7 +146,7 @@
     }
 
     .flip {
-      background: var(--box-color);
+      background: #fff;
       padding: 20px;
       border-radius: 10px;
       text-align: center;
@@ -158,63 +164,9 @@
       font-size: 0.9em;
     }
 
-    .botoes-surpresa {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .botao-surpresa {
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #ff69b4;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      transition: background-color 0.3s;
-    }
-
-    .botao-surpresa:hover {
-      background-color: #ff1493;
-    }
-
-    .imagem-surpresa {
-      display: none;
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      animation: surgir 1s ease forwards;
-    }
-
-    @keyframes surgir {
-      0% { opacity: 0; transform: scale(0.8) rotate(-5deg); }
-      100% { opacity: 1; transform: scale(1) rotate(0deg); }
-    }
-
-    .imagens-surpresa {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    @media (max-width: 768px) {
-      video {
-        margin-top: 20px;
-      }
-    }
-
-    body.dark {
-      --bg-gradient: linear-gradient(to top, #1e1e1e 0%, #333333 100%);
-      --text-color: #e0e0e0;
-      --box-color: #444;
-      --text-shadow: none;
+    body.dark .flip {
+      background: var(--box-color);
+      color: var(--text-color);
     }
   </style>
 </head>
@@ -241,18 +193,6 @@
     Seu navegador não suporta vídeo.
   </video>
 
-  <div class="botoes-surpresa">
-    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
-    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
-    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
-  </div>
-
-  <div class="imagens-surpresa">
-    <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" alt="Surpresa 1" />
-    <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" alt="Surpresa 2" />
-    <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" alt="Surpresa 3" />
-  </div>
-
   <div class="contador-regressivo">
     <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
     <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
@@ -263,28 +203,31 @@
 
   <div class="espaco-final"></div>
 
-  <button class="botao-tema" onclick="toggleTema()">🌙</button>
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
+  <button class="botao-noturno" onclick="toggleNoturno()">🌙</button>
 
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
   </audio>
 
   <script>
     const inicio = new Date("2024-02-13T00:00:00").getTime();
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
-    const botaoTema = document.querySelector(".botao-tema");
     let tocando = false;
 
     function atualizarContador() {
       const agora = new Date().getTime();
       const diferenca = agora - inicio;
+
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+
+      document.getElementById("contador").innerHTML =
+        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -311,10 +254,12 @@
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
+
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
       document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
@@ -323,14 +268,8 @@
 
     setInterval(atualizarRegressivo, 1000);
 
-    function toggleSurpresa(id) {
-      const img = document.getElementById(id);
-      img.style.display = (img.style.display === 'block') ? 'none' : 'block';
-    }
-
-    function toggleTema() {
+    function toggleNoturno() {
       document.body.classList.toggle("dark");
-      botaoTema.textContent = document.body.classList.contains("dark") ? "🌞" : "🌙";
     }
   </script>
 </body>
