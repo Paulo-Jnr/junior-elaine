@@ -353,19 +353,19 @@
   <ul>
     <li onclick="mostrarMemoria(1)">📅 13/02/2024 – Voltamos a nos falar</li>
     <img id="memoria1" class="img-memoria" src="img/data1.jpeg" style="display:none;" />
-    
+
     <li onclick="mostrarMemoria(2)">📅 06/03/2024 – Primeiro "Te Amo"</li>
     <img id="memoria2" class="img-memoria" src="img/data2.jpeg" style="display:none;" />
-    
+
     <li onclick="mostrarMemoria(3)">📅 11/03/2024 – Nosso primeiro rolê</li>
     <img id="memoria3" class="img-memoria" src="img/data3.jpeg" style="display:none;" />
-    
-    <li onclick="mostrarMemoria(4)">📅 12/05/2024 – Primeiro Dia dos Namorados</li>
+
+    <li onclick="mostrarMemoria(4)">📅 12/05/2024 – Primeiro Dia das Mães Juntos</li>
     <img id="memoria4" class="img-memoria" src="img/data4.jpeg" style="display:none;" />
-    
+
     <li onclick="mostrarMemoria(5)">📅 13/02/2025 – Um ano de nós</li>
     <img id="memoria5" class="img-memoria" src="img/data5.jpeg" style="display:none;" />
-    
+
     <li onclick="mostrarMemoria(6)">📅 13/04/2025 – Nosso Atual</li>
     <img id="memoria6" class="img-memoria" src="img/data6.jpeg" style="display:none;" />
   </ul>
@@ -373,61 +373,35 @@
 
 
 <style>
-  .rota-memorias {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 30px 20px;
-    max-width: 800px;
-    margin: 50px auto;
-    text-align: center;
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  .img-memoria {
+    display: block;
+    margin: 20px auto;
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
   }
 
-  .rota-memorias h2 {
-    font-size: 2em;
-    margin-bottom: 25px;
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  .rota-memorias {
+    padding: 20px;
+    text-align: center;
   }
 
   .rota-memorias ul {
     list-style: none;
     padding: 0;
-    margin: 0;
   }
 
-  .memoria {
-    margin-bottom: 25px;
+  .rota-memorias li {
     cursor: pointer;
-    font-size: 1.2em;
-    color: white;
-    transition: color 0.3s;
+    padding: 10px;
+    font-size: 16px;
+    transition: background 0.2s ease;
   }
 
-  .memoria:hover {
-    color: #ff99cc;
-  }
-
-  .img-memoria {
-    display: none;
-    margin-top: 12px;
-    max-width: 300px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
+  .rota-memorias li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
   }
 </style>
-
-<script>
- function mostrarMemoria(id) {
-  const img = document.getElementById(`memoria${id}`);
-  if (img.style.display === "none") {
-    img.style.display = "block";
-  } else {
-    img.style.display = "none";
-  }
-}
