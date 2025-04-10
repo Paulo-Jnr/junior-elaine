@@ -171,17 +171,9 @@
       background-color: #ff1493;
     }
 
-    .imagens-surpresa {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
     .imagem-surpresa {
       display: none;
-      width: 220px;
+      max-width: 300px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       animation: surgir 1s ease forwards;
@@ -198,20 +190,16 @@
       }
     }
 
-    canvas#fireworksCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+    .imagens-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <canvas id="fireworksCanvas"></canvas>
-
   <h1>Junior e Elaine</h1>
   <div id="contador"></div>
 
@@ -226,7 +214,7 @@
   </div>
 
   <div class="mensagem-texto-longo">
-        Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
   </div>
 
   <video controls>
@@ -235,9 +223,9 @@
   </video>
 
   <div class="botoes-surpresa">
-    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🏱 Surpresa 1</button>
-    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🏱 Surpresa 2</button>
-    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🏱 Surpresa 3</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
   </div>
 
   <div class="imagens-surpresa">
@@ -261,8 +249,6 @@
     <source src="Musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
-
-  <script src="https://cdn.jsdelivr.net/npm/@crashmax/fireworks-js@2.10.8/dist/index.umd.js"></script>
 
   <script>
     const inicio = new Date("2024-02-13T00:00:00").getTime();
@@ -325,28 +311,6 @@
       const img = document.getElementById(id);
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
-
-    // Iniciar fogos de artifício ao carregar a página por 5 segundos
-    window.addEventListener("load", () => {
-      const canvas = document.getElementById("fireworksCanvas");
-      const fireworks = new Fireworks.default(canvas, {
-        autoresize: true,
-        opacity: 0.9,
-        acceleration: 1.05,
-        friction: 0.97,
-        gravity: 1.5,
-        particles: 80,
-        trace: 3,
-        explosion: 5,
-        intensity: 30,
-        traceSpeed: 10,
-      });
-
-      fireworks.start();
-      setTimeout(() => {
-        fireworks.stop();
-      }, 5000);
-    });
   </script>
 </body>
 </html>
