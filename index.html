@@ -384,22 +384,34 @@
 </div>
 
 <style>
+<style>
   .rota-memorias {
-    background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 30px 20px;
     max-width: 850px;
     margin: 0 auto 60px;
     font-family: 'Segoe UI', sans-serif;
-    color: white;
     backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* Estilo padrão (modo claro) */
+  .rota-memorias {
+    background: rgba(255, 255, 255, 0.8);
+    color: #222;
+  }
+
+  /* Estilo para modo escuro */
+  body.dark-mode .rota-memorias {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
   }
 
   .rota-memorias h2 {
     text-align: center;
     font-size: 2em;
     margin-bottom: 30px;
-    color: white;
   }
 
   .memoria {
@@ -408,7 +420,7 @@
     cursor: pointer;
     position: relative;
     text-align: center;
-    transition: background 0.3s;
+    transition: text-shadow 0.3s;
   }
 
   .memoria:hover {
@@ -429,6 +441,8 @@
     0% { opacity: 0; transform: scale(0.95); }
     100% { opacity: 1; transform: scale(1); }
   }
+</style>
+
 </style>
 
 <script>
