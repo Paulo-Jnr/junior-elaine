@@ -89,10 +89,10 @@
       }
     }
 
-    .botao-musica {
+    .botao-musica,
+    .botao-noturno {
       position: fixed;
       top: 15px;
-      right: 15px;
       background-color: rgba(255, 255, 255, 0.15);
       border: 1px solid #fff;
       color: #fff;
@@ -107,8 +107,17 @@
       transition: background 0.3s;
     }
 
-    .botao-musica:hover {
+    .botao-musica:hover,
+    .botao-noturno:hover {
       background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .botao-musica {
+      right: 15px;
+    }
+
+    .botao-noturno {
+      right: 60px;
     }
 
     video {
@@ -197,6 +206,31 @@
       flex-wrap: wrap;
       margin-top: 20px;
     }
+
+    /* MODO NOTURNO */
+    body.escuro {
+      background: linear-gradient(to top, #1e1e1e 0%, #3a3a3a 100%);
+      color: #f0f0f0;
+    }
+
+    body.escuro h1 {
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    body.escuro .mensagem,
+    body.escuro .mensagem-texto-longo {
+      color: #f0f0f0;
+      text-shadow: none;
+    }
+
+    body.escuro .flip {
+      background: #333;
+    }
+
+    body.escuro .flip div,
+    body.escuro .flip span {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -214,7 +248,7 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor...
   </div>
 
   <video controls>
@@ -245,6 +279,8 @@
   <div class="espaco-final"></div>
 
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
+  <button class="botao-noturno" onclick="toggleNoturno()">🌙</button>
+
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
@@ -310,6 +346,10 @@
     function toggleSurpresa(id) {
       const img = document.getElementById(id);
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function toggleNoturno() {
+      document.body.classList.toggle("escuro");
     }
   </script>
 </body>
