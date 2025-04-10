@@ -146,7 +146,6 @@
       color: #333;
     }
 
-    /* Botões surpresa */
     .botoes-surpresa {
       display: flex;
       justify-content: center;
@@ -174,7 +173,6 @@
 
     .imagem-surpresa {
       display: none;
-      margin: 20px auto;
       max-width: 200px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -190,6 +188,14 @@
         opacity: 1;
         transform: scale(1) rotate(0deg);
       }
+    }
+
+    .imagens-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -208,7 +214,7 @@
   </div>
 
   <div class="mensagem-texto-longo">
-  Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️
   </div>
 
   <video controls>
@@ -216,15 +222,13 @@
     Seu navegador não suporta vídeo.
   </video>
 
-  <!-- Botões surpresa -->
   <div class="botoes-surpresa">
     <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
     <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
     <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
   </div>
 
-  <!-- Imagens surpresa -->
-  <div>
+  <div class="imagens-surpresa">
     <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" alt="Surpresa 1" />
     <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" alt="Surpresa 2" />
     <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" alt="Surpresa 3" />
