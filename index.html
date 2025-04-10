@@ -19,26 +19,141 @@
       color: #fff;
     }
 
-    /* SEU CSS ORIGINAL CONTINUA IGUAL AQUI... */
+    h1 {
+      margin-top: 30px;
+      font-size: 3em;
+    }
 
-    /* Adição para os fogos */
+    #contador {
+      margin-top: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .galeria img {
+      width: 200px;
+      height: auto;
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .mensagem, .mensagem-texto-longo {
+      margin: 30px;
+      font-size: 1.2em;
+      color: #222;
+      background: rgba(255,255,255,0.8);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    video {
+      width: 80%;
+      max-width: 600px;
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .botoes-surpresa {
+      margin: 20px;
+    }
+
+    .botao-surpresa {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin: 5px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .botao-surpresa:hover {
+      background-color: #ff1493;
+    }
+
+    .imagens-surpresa {
+      margin: 20px;
+    }
+
+    .imagem-surpresa {
+      display: none;
+      width: 200px;
+      margin: 10px;
+      border-radius: 12px;
+    }
+
+    .contador-regressivo {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .flip {
+      background-color: #fff;
+      color: #333;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 1.2em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .espaco-final {
+      height: 50px;
+    }
+
+    .botao-musica {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .coraçao {
+      position: absolute;
+      animation: subir 10s linear infinite;
+      font-size: 24px;
+    }
+
+    @keyframes subir {
+      0% {
+        bottom: 0;
+        opacity: 1;
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+      }
+    }
+
     #fireworks-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 9999;
+      z-index: 10000;
       pointer-events: none;
     }
   </style>
 </head>
 
 <body>
-  <!-- Container dos fogos -->
+  <!-- Fogos de artifício -->
   <div id="fireworks-container"></div>
 
-  <!-- SEU HTML ORIGINAL CONTINUA AQUI -->
   <h1>Junior e Elaine</h1>
   <div id="contador"></div>
 
@@ -53,7 +168,7 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses...
+    Já faz um ano e dois meses... e a cada dia que passa tenho mais certeza de que fomos feitos um para o outro. Obrigado por estar ao meu lado sempre, por sorrir comigo, por sonhar junto e por fazer da vida uma linda aventura.
   </div>
 
   <video controls>
@@ -78,7 +193,6 @@
     <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
     <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
     <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
-    <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
   </div>
 
   <div class="espaco-final"></div>
@@ -89,7 +203,6 @@
     Seu navegador não suporta áudio.
   </audio>
 
-  <!-- SEUS SCRIPTS ORIGINAIS -->
   <script>
     const inicio = new Date("2024-02-13T00:00:00").getTime();
     const musica = document.getElementById("musica");
@@ -152,7 +265,7 @@
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
 
-    // 🎆 Inicializar os fogos
+    // 🎆 Fogos ao carregar
     window.addEventListener("load", () => {
       const container = document.getElementById("fireworks-container");
       const fireworks = new Fireworks.default(container, {
