@@ -348,38 +348,38 @@
 </html>
 
 
-<!-- ROTA DE MEMÓRIAS COM IMAGENS -->
+<!-- ROTA DE MEMÓRIAS COM IMAGENS ESCONDIDAS -->
 <div class="rota-memorias">
   <h2>🗓️ Rota de Memórias</h2>
 
-  <div class="memoria">
-    <p>📅 13/02/2024 – Voltamos a nos falar</p>
-    <img src="img/data1.jpg" alt="Memória 1" />
+  <div class="memoria" onclick="toggleMemoria('mem1')">
+    📅 13/02/2024 – Voltamos a nos falar
+    <img id="mem1" src="img/data1.jpg" alt="Memória 1" class="img-memoria" />
   </div>
 
-  <div class="memoria">
-    <p>📅 06/03/2024 – Primeiro "Te Amo"</p>
-    <img src="img/data2.jpg" alt="Memória 2" />
+  <div class="memoria" onclick="toggleMemoria('mem2')">
+    📅 06/03/2024 – Primeiro "Te Amo"
+    <img id="mem2" src="img/data2.jpg" alt="Memória 2" class="img-memoria" />
   </div>
 
-  <div class="memoria">
-    <p>📅 11/03/2024 – Nosso primeiro rolê</p>
-    <img src="img/data3.jpg" alt="Memória 3" />
+  <div class="memoria" onclick="toggleMemoria('mem3')">
+    📅 11/03/2024 – Nosso primeiro rolê
+    <img id="mem3" src="img/data3.jpg" alt="Memória 3" class="img-memoria" />
   </div>
 
-  <div class="memoria">
-    <p>📅 12/05/2024 – Primeiro Dia dos Namorados</p>
-    <img src="img/data4.jpg" alt="Memória 4" />
+  <div class="memoria" onclick="toggleMemoria('mem4')">
+    📅 12/05/2024 – Primeiro Dia dos Namorados
+    <img id="mem4" src="img/data4.jpg" alt="Memória 4" class="img-memoria" />
   </div>
 
-  <div class="memoria">
-    <p>📅 13/02/2025 – Um ano de nós</p>
-    <img src="img/data5.jpg" alt="Memória 5" />
+  <div class="memoria" onclick="toggleMemoria('mem5')">
+    📅 13/02/2025 – Um ano de nós
+    <img id="mem5" src="img/data5.jpg" alt="Memória 5" class="img-memoria" />
   </div>
 
-  <div class="memoria">
-    <p>📅 13/04/2025 – Nosso Atual</p>
-    <img src="img/data6.jpg" alt="Memória 6" />
+  <div class="memoria" onclick="toggleMemoria('mem6')">
+    📅 13/04/2025 – Nosso Atual
+    <img id="mem6" src="img/data6.jpg" alt="Memória 6" class="img-memoria" />
   </div>
 </div>
 
@@ -403,25 +403,37 @@
   }
 
   .memoria {
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  .memoria p {
+    margin-bottom: 25px;
     font-size: 1.2em;
-    margin-bottom: 10px;
-    color: white;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    transition: background 0.3s;
   }
 
-  .memoria img {
+  .memoria:hover {
+    text-shadow: 0 0 8px #ff69b4;
+  }
+
+  .img-memoria {
+    display: none;
+    margin-top: 10px;
     width: 240px;
     max-width: 90%;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s;
+    animation: surgir 0.5s ease forwards;
   }
 
-  .memoria img:hover {
-    transform: scale(1.05);
+  @keyframes surgir {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
   }
 </style>
+
+<script>
+  function toggleMemoria(id) {
+    const img = document.getElementById(id);
+    img.style.display = (img.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
