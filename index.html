@@ -348,105 +348,31 @@
 </html>
 
 
-<!-- ROTA DE MEMÓRIAS COM IMAGENS ESCONDIDAS -->
+<!-- ROTA DE MEMÓRIAS -->
 <div class="rota-memorias">
   <h2>🗓️ Rota de Memórias</h2>
-
-  <div class="memoria" onclick="toggleMemoria('mem1')">
-    📅 13/02/2024 – Voltamos a nos falar
-    <img id="mem1" src="img/data1.jpeg" alt="Memória 1" class="img-memoria" />
+  <div class="memoria" onclick="mostrarImagem('data1')">📅 13/02/2024 – Voltamos a nos falar
+    <img id="data1" class="img-memoria" src="img/data1.jpeg" alt="Memória 1">
   </div>
-
-  <div class="memoria" onclick="toggleMemoria('mem2')">
-    📅 06/03/2024 – Primeiro "Te Amo"
-    <img id="mem2" src="img/data2.jpeg" alt="Memória 2" class="img-memoria" />
+  <div class="memoria" onclick="mostrarImagem('data2')">📅 06/03/2024 – Primeiro "Te Amo"
+    <img id="data2" class="img-memoria" src="img/data2.jpeg" alt="Memória 2">
   </div>
-
-  <div class="memoria" onclick="toggleMemoria('mem3')">
-    📅 11/03/2024 – Nosso primeiro rolê
-    <img id="mem3" src="img/data3.jpeg" alt="Memória 3" class="img-memoria" />
+  <div class="memoria" onclick="mostrarImagem('data3')">📅 11/03/2024 – Nosso primeiro rolê
+    <img id="data3" class="img-memoria" src="img/data3.jpeg" alt="Memória 3">
   </div>
-
-  <div class="memoria" onclick="toggleMemoria('mem4')">
-    📅 12/05/2024 – Primeiro Dia dos Namorados
-    <img id="mem4" src="img/data4.jpeg" alt="Memória 4" class="img-memoria" />
+  <div class="memoria" onclick="mostrarImagem('data4')">📅 12/05/2024 – Primeiro Dia dos Namorados
+    <img id="data4" class="img-memoria" src="img/data4.jpeg" alt="Memória 4">
   </div>
-
-  <div class="memoria" onclick="toggleMemoria('mem5')">
-    📅 13/02/2025 – Um ano de nós
-    <img id="mem5" src="img/data5.jpeg" alt="Memória 5" class="img-memoria" />
+  <div class="memoria" onclick="mostrarImagem('data5')">📅 13/02/2025 – Um ano de nós
+    <img id="data5" class="img-memoria" src="img/data5.jpeg" alt="Memória 5">
   </div>
-
-  <div class="memoria" onclick="toggleMemoria('mem6')">
-    📅 13/04/2025 – Nosso Atual
-    <img id="mem6" src="img/data6.jpeg" alt="Memória 6" class="img-memoria" />
+  <div class="memoria" onclick="mostrarImagem('data6')">📅 13/04/2025 – Nosso Atual
+    <img id="data6" class="img-memoria" src="img/data6.jpeg" alt="Memória 6">
   </div>
 </div>
 
-<style>
-<style>
-  .rota-memorias {
-    border-radius: 20px;
-    padding: 30px 20px;
-    max-width: 850px;
-    margin: 0 auto 60px;
-    font-family: 'Segoe UI', sans-serif;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    transition: background 0.3s, color 0.3s;
-  }
-
-  /* Estilo padrão (modo claro) */
-  .rota-memorias {
-    background: rgba(255, 255, 255, 0.8);
-    color: #222;
-  }
-
-  /* Estilo para modo escuro */
-  body.dark-mode .rota-memorias {
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-  }
-
-  .rota-memorias h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 30px;
-  }
-
-  .memoria {
-    margin-bottom: 25px;
-    font-size: 1.2em;
-    cursor: pointer;
-    position: relative;
-    text-align: center;
-    transition: text-shadow 0.3s;
-  }
-
-  .memoria:hover {
-    text-shadow: 0 0 8px #ff69b4;
-  }
-
-  .img-memoria {
-    display: none;
-    margin-top: 10px;
-    width: 240px;
-    max-width: 90%;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    animation: surgir 0.5s ease forwards;
-  }
-
-  @keyframes surgir {
-    0% { opacity: 0; transform: scale(0.95); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-</style>
-
-</style>
-
 <script>
-  function toggleMemoria(id) {
+  function mostrarImagem(id) {
     const img = document.getElementById(id);
     img.style.display = (img.style.display === 'block') ? 'none' : 'block';
   }
