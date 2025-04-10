@@ -168,21 +168,6 @@
       background: var(--box-color);
       color: var(--text-color);
     }
-
-    /* Estrelas no modo noturno */
-    .estrela {
-      position: fixed;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 6px white;
-      animation: brilhar 2s infinite alternate;
-      z-index: 0;
-    }
-
-    @keyframes brilhar {
-      0% { opacity: 0.2; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.5); }
-    }
   </style>
 </head>
 <body>
@@ -231,7 +216,6 @@
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
     let tocando = false;
-    let coracaoAtivo = true;
 
     function atualizarContador() {
       const agora = new Date().getTime();
@@ -249,7 +233,6 @@
     setInterval(atualizarContador, 1000);
 
     function criarCoracao() {
-      if (!coracaoAtivo) return;
       const cora = document.createElement("div");
       cora.classList.add("coraçao");
       cora.style.left = Math.random() * 100 + "vw";
@@ -286,30 +269,7 @@
     setInterval(atualizarRegressivo, 1000);
 
     function toggleNoturno() {
-      const isDark = document.body.classList.toggle("dark");
-      coracaoAtivo = !isDark;
-
-      if (isDark) {
-        criarEstrelas();
-      } else {
-        removerEstrelas();
-      }
-    }
-
-    function criarEstrelas() {
-      for (let i = 0; i < 100; i++) {
-        const estrela = document.createElement("div");
-        estrela.classList.add("estrela");
-        estrela.style.width = estrela.style.height = Math.random() * 2 + 1 + "px";
-        estrela.style.top = Math.random() * 100 + "vh";
-        estrela.style.left = Math.random() * 100 + "vw";
-        estrela.style.animationDuration = Math.random() * 3 + 2 + "s";
-        document.body.appendChild(estrela);
-      }
-    }
-
-    function removerEstrelas() {
-      document.querySelectorAll(".estrela").forEach(estrela => estrela.remove());
+      document.body.classList.toggle("dark");
     }
   </script>
 </body>
