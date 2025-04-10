@@ -5,63 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine 💑</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+    }
+
+    body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      color: #333;
       text-align: center;
-      color: #fff;
-      transition: background 0.5s, color 0.5s;
+      min-height: 100vh;
+      overflow-x: hidden;
       position: relative;
+      transition: background 0.5s, color 0.5s;
     }
 
     body.night-mode {
       background: radial-gradient(circle, #0d0d1a, #1a1a2e);
-      color: #eee;
+      color: #fff;
     }
 
     body.night-mode::before {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://i.ibb.co/5xRNPXQ/stars.gif');
+      background: url('https://i.ibb.co/5xRNPXQ/stars.gif') repeat;
       background-size: cover;
-      opacity: 0.08;
-      pointer-events: none;
+      opacity: 0.1;
       z-index: 0;
+      pointer-events: none;
     }
 
     h1 {
-      font-size: 3.5em;
-      margin-top: 40px;
-      font-family: 'Monotype Corsiva', cursive;
+      font-size: 2.8em;
+      margin: 30px 10px 20px;
       color: #fff;
-      text-shadow: 2px 2px 5px #ff69b4;
+      text-shadow: 2px 2px 6px #ff69b4;
+      font-family: 'Monotype Corsiva', cursive;
+      position: relative;
+      z-index: 2;
     }
 
     #contador {
-      font-size: 2em;
-      margin: 20px 0;
-      font-family: 'Segoe UI Black', sans-serif;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      z-index: 2;
+      position: relative;
     }
 
     video {
-      margin-top: 40px;
-      max-width: 90%;
+      width: 90%;
+      max-width: 500px;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 1;
+      margin: 20px auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      position: relative;
+    }
+
+    .contador-regressivo {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      z-index: 2;
+      position: relative;
+    }
+
+    .flip {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .flip div {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .flip span {
+      font-size: 0.8em;
+    }
+
+    body.night-mode .flip {
+      background: #2c2c3d;
+    }
+
+    body.night-mode .flip div,
+    body.night-mode .flip span {
+      color: #fff;
     }
 
     .coraçao {
       position: fixed;
       top: -50px;
       color: red;
-      animation: cair 8s linear infinite;
       font-size: 2em;
+      animation: cair 8s linear infinite;
       z-index: 1;
     }
 
@@ -74,10 +122,10 @@
     .botao-musica, .botao-noturno {
       position: fixed;
       top: 15px;
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #fff;
       color: #fff;
-      padding: 4px 8px;
+      padding: 6px 10px;
       font-size: 1em;
       border-radius: 8px;
       cursor: pointer;
@@ -85,60 +133,29 @@
       text-shadow: 1px 1px 2px #ff69b4;
       backdrop-filter: blur(4px);
       transition: background 0.3s;
-      z-index: 2;
+      z-index: 3;
     }
 
-    .botao-musica:hover, .botao-noturno:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+    .botao-musica:hover,
+    .botao-noturno:hover {
+      background-color: rgba(255, 255, 255, 0.4);
     }
 
-    .botao-musica { right: 15px; }
-    .botao-noturno { left: 15px; }
-
-    .contador-regressivo {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 2cm;
-      flex-wrap: wrap;
+    .botao-musica {
+      right: 15px;
     }
 
-    .flip {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      width: 80px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    body.night-mode .flip {
-      background: #2c2c3d;
-      color: #fff;
-    }
-
-    .flip div {
-      font-size: 2em;
-      font-weight: bold;
-      color: #333;
-    }
-
-    body.night-mode .flip div,
-    body.night-mode .flip span {
-      color: #fff;
-    }
-
-    .flip span {
-      font-size: 0.9em;
+    .botao-noturno {
+      left: 15px;
     }
 
     .espaco-final {
-      height: 150px;
+      height: 100px;
     }
   </style>
 </head>
 <body>
-  <h1>Junior e Elaine 👩‍❤️‍👨</h1>
+  <h1>Junior & Elaine 💞</h1>
   <div id="contador"></div>
 
   <video controls>
@@ -151,13 +168,12 @@
     <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
     <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
     <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
-    <div class="flip"><div>💍</div><span>Amor</span></div>
   </div>
-
-  <div class="espaco-final"></div>
 
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <button class="botao-noturno" onclick="toggleModoNoturno()">🌙</button>
+
+  <div class="espaco-final"></div>
 
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
@@ -179,7 +195,7 @@
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤️`;
     }
     setInterval(atualizarContador, 1000);
 
@@ -203,7 +219,7 @@
       cora.classList.add("coraçao");
       cora.style.left = Math.random() * 100 + "vw";
       cora.style.animationDuration = (Math.random() * 4 + 6) + "s";
-      cora.innerHTML = "❤";
+      cora.innerHTML = "❤️";
       document.body.appendChild(cora);
       setTimeout(() => cora.remove(), 10000);
     }
@@ -216,9 +232,8 @@
     }
 
     function toggleModoNoturno() {
-      const body = document.body;
-      body.classList.toggle("night-mode");
-      coracaoAtivo = !body.classList.contains("night-mode");
+      document.body.classList.toggle("night-mode");
+      coracaoAtivo = !document.body.classList.contains("night-mode");
     }
   </script>
 </body>
