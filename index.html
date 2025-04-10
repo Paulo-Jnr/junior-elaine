@@ -112,7 +112,7 @@
     }
 
     video {
-      max-width: 90%;
+      max-width: 100%;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
@@ -196,6 +196,55 @@
       flex-wrap: wrap;
       margin-top: 20px;
     }
+
+    .video-baloes-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .baloes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .balao {
+      width: 70px;
+      height: 70px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .balao:hover {
+      transform: scale(1.1);
+    }
+
+    .balao img {
+      display: none;
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      .video-baloes-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -213,25 +262,26 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico...
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor...
   </div>
 
-  <!-- Bloco de vídeo + balões -->
-  <div style="display: flex; justify-content: center; align-items: flex-start; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
+  <div class="video-baloes-container">
     <video controls>
       <source src="video.mp4" type="video/mp4" />
       Seu navegador não suporta vídeo.
     </video>
-
-    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
-      <button onclick="mostrarBalao('balao1')" style="font-size: 2em; background: none; border: none; cursor: pointer;">🎈</button>
-      <div id="balao1" style="display:none;">
-        <img src="img/balao1.jpg" alt="Balao 1" style="max-width: 180px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+    <div class="baloes">
+      <div class="balao" onclick="toggleBalao(this)">
+        🎈
+        <img src="img/surpresa1.jpeg" alt="Surpresa 1">
       </div>
-
-      <button onclick="mostrarBalao('balao2')" style="font-size: 2em; background: none; border: none; cursor: pointer;">🎈</button>
-      <div id="balao2" style="display:none;">
-        <img src="img/balao2.jpg" alt="Balao 2" style="max-width: 180px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+      <div class="balao" onclick="toggleBalao(this)">
+        🎈
+        <img src="img/surpresa2.jpeg" alt="Surpresa 2">
+      </div>
+      <div class="balao" onclick="toggleBalao(this)">
+        🎈
+        <img src="img/surpresa3.jpeg" alt="Surpresa 3">
       </div>
     </div>
   </div>
@@ -273,11 +323,14 @@
     function atualizarContador() {
       const agora = new Date().getTime();
       const diferenca = agora - inicio;
+
       const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+
+      document.getElementById("contador").innerHTML =
+        `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
     }
 
     setInterval(atualizarContador, 1000);
@@ -304,10 +357,12 @@
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
+
       const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
       const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
       document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
@@ -321,9 +376,9 @@
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
 
-    function mostrarBalao(id) {
-      const img = document.getElementById(id);
-      img.style.display = (img.style.display === 'block') ? 'none' : 'block';
+    function toggleBalao(element) {
+      const img = element.querySelector("img");
+      img.style.display = img.style.display === "block" ? "none" : "block";
     }
   </script>
 </body>
