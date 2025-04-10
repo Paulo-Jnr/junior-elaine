@@ -346,17 +346,41 @@
   </script>
 </body>
 </html>
-<!-- ROTA DE MEMÓRIAS -->
+
+
+<!-- ROTA DE MEMÓRIAS COM IMAGENS -->
 <div class="rota-memorias">
   <h2>🗓️ Rota de Memórias</h2>
-  <ul>
-    <li>📅 13/02/2024 – Voltamos a nos falar</li>
-    <li>📅 06/03/2024 – Primeiro "Te Amo"</li>
-    <li>📅 11/03/2024 – Nosso primeiro rolê</li>
-    <li>📅 12/05/2024 – Primeiro Dia dos Namorados</li>
-    <li>📅 13/02/2025 – Um ano de nós</li>
-    <li>📅 13/04/2025 – Nosso Atual</li>
-  </ul>
+
+  <div class="memoria">
+    <p>📅 13/02/2024 – Voltamos a nos falar</p>
+    <img src="img/data1.jpg" alt="Memória 1" />
+  </div>
+
+  <div class="memoria">
+    <p>📅 06/03/2024 – Primeiro "Te Amo"</p>
+    <img src="img/data2.jpg" alt="Memória 2" />
+  </div>
+
+  <div class="memoria">
+    <p>📅 11/03/2024 – Nosso primeiro rolê</p>
+    <img src="img/data3.jpg" alt="Memória 3" />
+  </div>
+
+  <div class="memoria">
+    <p>📅 12/05/2024 – Primeiro Dia dos Namorados</p>
+    <img src="img/data4.jpg" alt="Memória 4" />
+  </div>
+
+  <div class="memoria">
+    <p>📅 13/02/2025 – Um ano de nós</p>
+    <img src="img/data5.jpg" alt="Memória 5" />
+  </div>
+
+  <div class="memoria">
+    <p>📅 13/04/2025 – Nosso Atual</p>
+    <img src="img/data6.jpg" alt="Memória 6" />
+  </div>
 </div>
 
 <style>
@@ -364,9 +388,8 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 30px 20px;
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto 60px;
-    text-align: left;
     font-family: 'Segoe UI', sans-serif;
     color: white;
     backdrop-filter: blur(4px);
@@ -375,19 +398,30 @@
   .rota-memorias h2 {
     text-align: center;
     font-size: 2em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: white;
   }
 
-  .rota-memorias ul {
-    list-style: none;
-    padding-left: 0;
+  .memoria {
+    margin-bottom: 30px;
+    text-align: center;
   }
 
-  .rota-memorias li {
+  .memoria p {
     font-size: 1.2em;
-    margin-bottom: 12px;
-    line-height: 1.5em;
+    margin-bottom: 10px;
     color: white;
+  }
+
+  .memoria img {
+    width: 240px;
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+  }
+
+  .memoria img:hover {
+    transform: scale(1.05);
   }
 </style>
