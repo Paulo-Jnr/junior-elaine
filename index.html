@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junior & Elaine</title>
+
+  <!-- 🎆 Biblioteca Fireworks -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.1.0/dist/index.umd.min.js"></script>
+
   <style>
-    /* (todo o seu CSS anterior permanece igual aqui) */
     body {
       margin: 0;
       padding: 0;
@@ -16,70 +19,78 @@
       color: #fff;
     }
 
-    /* ... todo o resto do seu CSS continua aqui ... */
+    /* SEU CSS ORIGINAL CONTINUA IGUAL AQUI... */
 
+    /* Adição para os fogos */
     #fireworks-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
+      z-index: 9999;
       pointer-events: none;
-      z-index: 1000;
     }
   </style>
-
-  <!-- 🎆 Biblioteca Fireworks -->
-  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.js"></script>
 </head>
 
 <body>
+  <!-- Container dos fogos -->
   <div id="fireworks-container"></div>
 
-  <!-- 🔥 Seu conteúdo original começa aqui -->
+  <!-- SEU HTML ORIGINAL CONTINUA AQUI -->
   <h1>Junior e Elaine</h1>
   <div id="contador"></div>
 
-  <!-- (todo o restante do seu conteúdo continua idêntico...) -->
+  <div class="galeria">
+    <img src="img/foto1.jpeg" alt="Foto 1" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
+    <img src="img/foto2.jpeg" alt="Foto 2" />
+  </div>
 
-  <!-- 🎵 Música, contador, corações e surpresas -->
+  <div class="mensagem">
+    "Cada momento com você é uma nova chance de sorrir. Te amo! 💖"
+  </div>
+
+  <div class="mensagem-texto-longo">
+    Já faz um ano e dois meses...
+  </div>
+
+  <video controls>
+    <source src="video.mp4" type="video/mp4" />
+    Seu navegador não suporta vídeo.
+  </video>
+
+  <div class="botoes-surpresa">
+    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
+  </div>
+
+  <div class="imagens-surpresa">
+    <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" alt="Surpresa 1" />
+    <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" alt="Surpresa 2" />
+    <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" alt="Surpresa 3" />
+  </div>
+
+  <div class="contador-regressivo">
+    <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
+    <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
+    <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
+    <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
+    <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
+  </div>
+
+  <div class="espaco-final"></div>
+
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
 
+  <!-- SEUS SCRIPTS ORIGINAIS -->
   <script>
-    // 🎆 FOGOS DE ARTIFÍCIO POR 5 SEGUNDOS
-    window.addEventListener("load", () => {
-      const container = document.getElementById("fireworks-container");
-      const fireworks = new Fireworks(container, {
-        autoresize: true,
-        opacity: 0.5,
-        acceleration: 1.05,
-        friction: 0.97,
-        gravity: 1.5,
-        particles: 50,
-        trace: 3,
-        explosion: 5,
-        intensity: 30,
-        traceSpeed: 10,
-        flickering: 50,
-        lineStyle: "round",
-        hue: { min: 0, max: 360 },
-        delay: { min: 30, max: 60 },
-        rocketsPoint: { min: 50, max: 50 },
-      });
-      fireworks.start();
-
-      setTimeout(() => {
-        fireworks.stop();
-        container.remove(); // remove os fogos após 5 segundos
-      }, 5000);
-    });
-
-    // (todo o resto dos seus scripts originais continua abaixo)
-
     const inicio = new Date("2024-02-13T00:00:00").getTime();
     const musica = document.getElementById("musica");
     const botaoMusica = document.querySelector(".botao-musica");
@@ -140,6 +151,32 @@
       const img = document.getElementById(id);
       img.style.display = (img.style.display === 'block') ? 'none' : 'block';
     }
+
+    // 🎆 Inicializar os fogos
+    window.addEventListener("load", () => {
+      const container = document.getElementById("fireworks-container");
+      const fireworks = new Fireworks.default(container, {
+        autoresize: true,
+        opacity: 0.5,
+        acceleration: 1.05,
+        friction: 0.95,
+        gravity: 1.5,
+        particles: 80,
+        trace: 3,
+        explosion: 6,
+        intensity: 30,
+        flickering: 50,
+        hue: { min: 0, max: 360 },
+        delay: { min: 15, max: 30 },
+        rocketsPoint: 50,
+      });
+      fireworks.start();
+
+      setTimeout(() => {
+        fireworks.stop();
+        container.remove();
+      }, 5000);
+    });
   </script>
 </body>
 </html>
