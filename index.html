@@ -78,10 +78,9 @@
       position: fixed;
       top: -50px;
       color: red;
-      animation: cair 10s linear infinite;
+      animation: cair 7s linear infinite;
       font-size: 2em;
       z-index: 0;
-      opacity: 0.7;
     }
 
     @keyframes cair {
@@ -146,6 +145,53 @@
       font-size: 0.9em;
       color: #333;
     }
+
+    .botao-surpresa {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: white;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .botao-surpresa:hover {
+      transform: scale(1.05);
+      background-color: #ff85c1;
+    }
+
+    .imagem-surpresa {
+      margin-top: 30px;
+      display: none;
+      max-width: 80%;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .imagem-surpresa.mostrar {
+      display: block;
+      opacity: 1;
+    }
+
+    .mensagem-surpresa {
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: #ff1493;
+      display: none;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -163,21 +209,23 @@
   </div>
 
   <div class="mensagem-texto-longo">
-    Já faz um ano e dois meses desde que nos reencontramos e, sinceramente, parece que foi ontem que nossos olhares se cruzaram de novo. Eu nem imaginava que o destino tinha algo tão especial guardado pra gente, mas olha só onde estamos: vivendo momentos inesquecíveis e construindo uma história de amor que eu nunca pensei ser possível.<br><br>
-
-    Sou grato por cada sorriso, cada risada, cada aventura e também pelos momentos de calma que dividimos. Você trouxe uma luz nova pra minha vida, uma alegria leve e sincera que eu nem sabia que precisava. Com você, tudo faz mais sentido. <br><br>
-
-    Sou grato por ter te reencontrado. Por ter tido a chance de conhecer você de novo, de uma forma mais profunda. Cada conversa, cada desafio, cada silêncio entre nós me ensinou algo. Me fez crescer. Me fez entender melhor quem eu sou e o que eu quero da vida — e o que eu quero é você. <br><br>
-
-    Hoje, com um ano e dois meses de história, eu tenho certeza: quero passar o resto da minha vida ao seu lado. Quero casar com você, construir uma vida juntos, encher nossos dias de memórias que vamos guardar pra sempre. Quero acordar com você todo dia e saber que tenho ao meu lado alguém que me ama, me apoia e me faz sorrir mesmo nos dias difíceis. <br><br>
-
-    Eu te amo. Obrigado por ser minha parceira, minha melhor amiga, minha alma gêmea. Prometo te amar, te respeitar e cuidar de você — sempre.
+    Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo infinitamente e para sempre. ❤️
   </div>
 
   <video controls>
     <source src="video.mp4" type="video/mp4" />
     Seu navegador não suporta vídeo.
   </video>
+
+  <!-- Botão surpresa -->
+  <div style="margin-top: 30px;">
+    <h2 style="color: #d63384; text-shadow: 1px 1px 3px #fff;">Tenho uma surpresa pra você 💝</h2>
+    <button class="botao-surpresa" onclick="mostrarSurpresa()">🎁 Ver Surpresa</button>
+    <img src="img/surpresa.jpeg" alt="Surpresa Romântica" class="imagem-surpresa" id="surpresaImg" />
+    <div class="mensagem-surpresa" id="mensagemFinal">
+      Te amo mais do que ontem... e menos do que amanhã! 💕
+    </div>
+  </div>
 
   <div class="contador-regressivo">
     <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
@@ -220,17 +268,13 @@
       const cora = document.createElement("div");
       cora.classList.add("coraçao");
       cora.style.left = Math.random() * 100 + "vw";
-      cora.style.fontSize = (Math.random() * 1.5 + 1.5) + "em";
-      cora.style.animationDuration = (Math.random() * 10 + 10) + "s"; // agora entre 10 e 20s
+      cora.style.animationDuration = (Math.random() * 5 + 5) + "s";
       cora.innerHTML = "❤";
       document.body.appendChild(cora);
-
-      setTimeout(() => {
-        cora.remove();
-      }, 20000); // bate com a duração da animação
+      setTimeout(() => cora.remove(), 7000);
     }
 
-    setInterval(criarCoracao, 400);
+    setInterval(criarCoracao, 300);
 
     function toggleMusica() {
       if (tocando) {
@@ -243,9 +287,7 @@
       tocando = !tocando;
     }
 
-    // Contador regressivo
     const destino = new Date("2025-06-16T21:00:00").getTime();
-
     function atualizarRegressivo() {
       const agora = new Date().getTime();
       const tempoRestante = destino - agora;
@@ -262,6 +304,16 @@
     }
 
     setInterval(atualizarRegressivo, 1000);
+
+    function mostrarSurpresa() {
+      const imagem = document.getElementById("surpresaImg");
+      const mensagem = document.getElementById("mensagemFinal");
+
+      imagem.classList.add("mostrar");
+      setTimeout(() => {
+        mensagem.style.display = 'block';
+      }, 1000);
+    }
   </script>
 </body>
 </html>
