@@ -2,245 +2,420 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Surpresa para o Amor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Junior & Elaine 💑</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #fff;
-      color: #333;
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      text-align: center;
+      color: #fff;
+      transition: background 0.5s;
     }
 
-    .titulo {
-      text-align: center;
-      font-size: 2.5rem;
+    body.dark-mode {
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    }
+
+    h1 {
+      font-size: 3.5em;
+      margin-top: 40px;
+      font-family: 'Monotype Corsiva', cursive;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
+    }
+
+    #contador {
+      font-size: 2em;
+      margin: 20px 0;
+      color: #fff;
+      font-family: 'Segoe UI Black', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .galeria {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .galeria img {
+      width: 180px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .mensagem, .mensagem-texto-longo {
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-shadow: 1px 1px 4px #ff69b4;
+      padding: 0 20px;
+    }
+
+    .mensagem {
+      margin-top: 30px;
+      font-size: 1.5em;
+    }
+
+    .mensagem-texto-longo {
+      margin-top: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      text-align: justify;
+    }
+
+    video {
+      margin-top: 40px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .botoes-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .botao-surpresa {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .imagem-surpresa {
+      display: none;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      animation: surgir 1s ease forwards;
+    }
+
+    @keyframes surgir {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .imagens-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
       margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    .contador {
-      text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 30px;
     }
 
     .contador-regressivo {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-top: 30px;
+      margin-top: 2cm;
+      flex-wrap: wrap;
     }
 
     .flip {
-      background-color: #f3f3f3;
-      padding: 15px;
+      background: #fff;
+      padding: 20px;
       border-radius: 10px;
       text-align: center;
-      min-width: 60px;
+      width: 80px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .flip div {
+      font-size: 2em;
+      font-weight: bold;
+      color: #333;
     }
 
     .flip span {
-      display: block;
-    }
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-      padding: 20px;
-    }
-
-    .galeria img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .mensagem {
-      text-align: center;
-      margin: 30px 20px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-
-    .video {
-      display: flex;
-      justify-content: center;
-      margin: 40px 0;
-    }
-
-    .video iframe {
-      width: 90%;
-      max-width: 600px;
-      border-radius: 12px;
-    }
-
-    .botoes-surpresa {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 40px 0;
-    }
-
-    .botao-surpresa {
-      background-color: #ff4081;
-      border: none;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      font-size: 1.5rem;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .botao-surpresa:hover {
-      transform: scale(1.1);
-    }
-
-    .imagem-surpresa {
-      display: none;
-      max-width: 80%;
-      margin: 20px auto;
-      border-radius: 15px;
+      font-size: 0.9em;
+      color: #333;
     }
 
     .espaco-final {
-      height: 100px;
+      height: 150px;
     }
 
-    .rota-memorias {
-      background-color: #fbeffb;
-      padding: 30px 20px;
-      margin: 40px 0 0 0;
+    .coraçao {
+      position: fixed;
+      top: -50px;
+      color: red;
+      animation: cair 8s linear infinite;
+      font-size: 2em;
+      z-index: 0;
     }
 
-    .rota-memorias h2 {
-      text-align: center;
-      font-size: 2rem;
-      color: #a64ca6;
-      margin-bottom: 20px;
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+      }
     }
 
-    .rota-memorias ul {
-      list-style: none;
-      padding: 0;
+    .estrela {
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: brilho 2s infinite ease-in-out;
+      z-index: 0;
     }
 
-    .rota-memorias li {
-      background-color: #fff;
-      margin: 10px auto;
-      max-width: 500px;
-      padding: 15px 20px;
-      border-left: 5px solid #a64ca6;
+    @keyframes brilho {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .botao-musica, .botao-noturno {
+      position: fixed;
+      top: 15px;
+      padding: 6px 10px;
+      font-size: 1em;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      font-weight: bold;
+      border: 1px solid #fff;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      z-index: 3;
     }
 
-    audio {
-      display: block;
-      margin: 20px auto;
+    .botao-musica:hover, .botao-noturno:hover {
+      background-color: rgba(255, 255, 255, 0.3);
     }
+
+    .botao-musica { right: 15px; }
+    .botao-noturno { left: 15px; }
   </style>
 </head>
 <body>
-  <h1 class="titulo">💖 Minha Surpresa para Você 💖</h1>
-  <p class="contador">Faltam apenas:</p>
-  <div class="contador-regressivo">
-    <div class="flip">
-      <span id="dias">00</span>
-      <span>dias</span>
-    </div>
-    <div class="flip">
-      <span id="horas">00</span>
-      <span>horas</span>
-    </div>
-    <div class="flip">
-      <span id="minutos">00</span>
-      <span>minutos</span>
-    </div>
-    <div class="flip">
-      <span id="segundos">00</span>
-      <span>segundos</span>
-    </div>
-  </div>
+  <button class="botao-noturno" onclick="toggleModoNoturno()">🌙</button>
+  <button class="botao-musica" onclick="toggleMusica()">▶️</button>
+
+  <h1>Junior e Elaine 👩‍❤️‍👨</h1>
+  <div id="contador"></div>
 
   <div class="galeria">
-    <img src="img1.jpg" alt="Foto 1">
-    <img src="img2.jpg" alt="Foto 2">
-    <img src="img3.jpg" alt="Foto 3">
-    <img src="img4.jpg" alt="Foto 4">
+    <img src="img/foto1.jpeg" alt="Foto 1" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
+    <img src="img/foto2.jpeg" alt="Foto 2" />
   </div>
 
-  <div class="mensagem">
-    <p>
-      Você é minha melhor parte, minha alegria diária. Cada momento com você é especial e inesquecível.
-      Essa surpresa é só um pedacinho de todo meu amor. Te amo infinitamente! 💘
-    </p>
-  </div>
+  <div class="mensagem">"Cada momento com você é uma nova chance de sorrir. Te amo! 💖"</div>
+  <div class="mensagem-texto-longo">Já faz um ano e dois meses desde que nos reencontramos e decidimos dar mais uma chance ao nosso amor. Desde então, cada momento ao seu lado tem sido mágico. Você transforma meus dias com seu sorriso, com seu carinho, e até mesmo com suas birras. Rsrs. Eu não consigo imaginar minha vida sem você, sem o seu amor, sem nossas conversas bobas, nossos abraços demorados e nossos planos para o futuro. Sei que temos nossos altos e baixos, mas cada desafio só me faz querer lutar mais por nós. Obrigado por me amar, por me apoiar e por ser minha melhor amiga, minha parceira, minha namorada e minha futura esposa. Prometo estar ao seu lado, cuidando de você, te fazendo rir, te enchendo de beijos e sendo o seu porto seguro. Eu te amo, Prometo te amar, te respeitar e cuidar de você — sempre. ❤️ ❤️</div>
 
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-  </div>
+  <video controls><source src="video.mp4" type="video/mp4"/></video>
 
   <div class="botoes-surpresa">
-    <button class="botao-surpresa" onclick="mostrarSurpresa(1)">🎁</button>
-    <button class="botao-surpresa" onclick="mostrarSurpresa(2)">🎁</button>
-    <button class="botao-surpresa" onclick="mostrarSurpresa(3)">🎁</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
   </div>
 
-  <img id="surpresa1" class="imagem-surpresa" src="surpresa1.jpg" alt="Surpresa 1">
-  <img id="surpresa2" class="imagem-surpresa" src="surpresa2.jpg" alt="Surpresa 2">
-  <img id="surpresa3" class="imagem-surpresa" src="surpresa3.jpg" alt="Surpresa 3">
+  <div class="imagens-surpresa">
+    <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" alt="Surpresa 1" />
+    <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" alt="Surpresa 2" />
+    <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" alt="Surpresa 3" />
+  </div>
 
-  <!-- ROTA DE MEMÓRIAS -->
-  <div class="rota-memorias">
-    <h2>🗓️ Rota de Memórias</h2>
-    <ul>
-      <li><strong>01/01/2023</strong> - Nosso primeiro encontro do ano ✨</li>
-      <li><strong>14/02/2023</strong> - Nosso primeiro Valentine's juntos 💘</li>
-      <li><strong>12/06/2023</strong> - O Dia dos Namorados mais especial 💐</li>
-      <li><strong>25/12/2023</strong> - Natal com muito amor e sorrisos 🎄</li>
-    </ul>
+  <div class="contador-regressivo">
+    <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
+    <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
+    <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
+    <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
+    <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
   </div>
 
   <div class="espaco-final"></div>
 
-  <audio controls autoplay loop>
-    <source src="musica.mp3" type="audio/mpeg">
-    Seu navegador não suporta o elemento de áudio.
+  <audio id="musica" loop>
+    <source src="Musica.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
-    // Contador Regressivo
-    const dataAlvo = new Date("2025-06-12T00:00:00").getTime();
+    const inicio = new Date("2024-02-13T00:00:00").getTime();
+    const destino = new Date("2025-06-16T21:00:00").getTime();
+    const musica = document.getElementById("musica");
+    const botaoMusica = document.querySelector(".botao-musica");
+    let tocando = false;
+    let coracoesAtivos = true;
 
-    setInterval(function () {
+    function atualizarContador() {
       const agora = new Date().getTime();
-      const distancia = dataAlvo - agora;
+      const diferenca = agora - inicio;
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+      document.getElementById("contador").innerHTML = `Juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤`;
+    }
 
-      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+    function atualizarRegressivo() {
+      const agora = new Date().getTime();
+      const tempoRestante = destino - agora;
+      const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
 
-      document.getElementById("dias").innerText = dias.toString().padStart(2, '0');
-      document.getElementById("horas").innerText = horas.toString().padStart(2, '0');
-      document.getElementById("minutos").innerText = minutos.toString().padStart(2, '0');
-      document.getElementById("segundos").innerText = segundos.toString().padStart(2, '0');
+      document.getElementById("diasR").textContent = dias.toString().padStart(2, '0');
+      document.getElementById("horasR").textContent = horas.toString().padStart(2, '0');
+      document.getElementById("minutosR").textContent = minutos.toString().padStart(2, '0');
+      document.getElementById("segundosR").textContent = segundos.toString().padStart(2, '0');
+    }
+
+    function toggleMusica() {
+      tocando ? musica.pause() : musica.play();
+      botaoMusica.textContent = tocando ? "▶️" : "⏸️";
+      tocando = !tocando;
+    }
+
+    function toggleSurpresa(id) {
+      const img = document.getElementById(id);
+      img.style.display = (img.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function criarCoracao() {
+      if (!coracoesAtivos) return;
+      const cora = document.createElement("div");
+      cora.classList.add("coraçao");
+      cora.style.left = Math.random() * 100 + "vw";
+      cora.style.animationDuration = (Math.random() * 4 + 6) + "s";
+      cora.innerHTML = "❤";
+      document.body.appendChild(cora);
+      setTimeout(() => cora.remove(), 10000);
+    }
+
+    setInterval(() => {
+      atualizarContador();
+      atualizarRegressivo();
     }, 1000);
 
-    // Mostrar surpresa
-    function mostrarSurpresa(numero) {
-      const total = 3;
-      for (let i = 1; i <= total; i++) {
-        const img = document.getElementById("surpresa" + i);
-        img.style.display = i === numero ? "block" : "none";
+    setInterval(criarCoracao, 400);
+
+    function criarEstrelas() {
+      for (let i = 0; i < 100; i++) {
+        const estrela = document.createElement("div");
+        estrela.className = "estrela";
+        estrela.style.left = Math.random() * 100 + "vw";
+        estrela.style.top = Math.random() * 100 + "vh";
+        estrela.style.opacity = Math.random();
+        estrela.style.width = estrela.style.height = Math.random() * 2 + 1 + "px";
+        document.body.appendChild(estrela);
+      }
+    }
+
+    function removerEstrelas() {
+      document.querySelectorAll('.estrela').forEach(e => e.remove());
+    }
+
+    function toggleModoNoturno() {
+      const modoEscuro = document.body.classList.toggle("dark-mode");
+      if (modoEscuro) {
+        criarEstrelas();
+        coracoesAtivos = false;
+      } else {
+        removerEstrelas();
+        coracoesAtivos = true;
       }
     }
   </script>
 </body>
 </html>
+
+
+<div class="rota-memorias">
+  <h2>🗓️ Rota de Memórias</h2>
+  <ul>
+   
+    <li class="memoria" onclick="mostrarMemoria(3)">📅 11/03/2024 – Nosso primeiro rolê<br><img id="memoria3" class="img-memoria" src="img/data3.jpeg" alt="Memória 3" /></li>
+    <li class="memoria" onclick="mostrarMemoria(4)">📅 12/05/2024 – Primeiro Dia dos Namorados<br><img id="memoria4" class="img-memoria" src="img/data4.jpeg" alt="Memória 4" /></li>
+    <li class="memoria" onclick="mostrarMemoria(1)">📅 23/05/2024 – Aliança<br><img id="memoria1" class="img-memoria" src="img/data1.jpeg" alt="Memória 1" /></li>
+    <li class="memoria" onclick="mostrarMemoria(2)">📅 24/05/2024 – Nosso Compromisso<br><img id="memoria2" class="img-memoria" src="img/data2.jpeg" alt="Memória 2" /></li>
+    <li class="memoria" onclick="mostrarMemoria(5)">📅 13/02/2025 – Um ano de nós<br><img id="memoria5" class="img-memoria" src="img/data5.jpeg" alt="Memória 5" /></li>
+    <li class="memoria" onclick="mostrarMemoria(6)">📅 13/04/2025 – Nosso Atual<br><img id="memoria6" class="img-memoria" src="img/data6.jpeg" alt="Memória 6" /></li>
+  </ul>
+</div>
+
+<style>
+  .rota-memorias {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  .rota-memorias h2 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .rota-memorias ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .memoria {
+    margin-bottom: 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: white;
+    transition: color 0.3s;
+  }
+
+  .memoria:hover {
+    color: #ff99cc;
+  }
+
+  .img-memoria {
+    display: none;
+    margin-top: 12px;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<script>
+  function mostrarMemoria(id) {
+    const img = document.getElementById("memoria" + id);
+    img.style.display = img.style.display === "block" ? "none" : "block";
+  }
+</script>
