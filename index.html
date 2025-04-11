@@ -5,149 +5,321 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Junior & Elaine 💑</title>
   <style>
-    /* EXISTENTES (mantidos todos os estilos) */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to top, #ffdee9 0%, #b5fffc 100%);
+      text-align: center;
+      color: #fff;
+      transition: background 0.5s;
+    }
 
-    /* ...[todo seu CSS anterior aqui permanece inalterado]... */
+    body.dark-mode {
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    }
 
-    /* NOVO: Tela de presente */
-    #tela-presente {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(to top, #ffdee9, #b5fffc);
+    h1 {
+      font-size: 3.5em;
+      margin-top: 40px;
+      font-family: 'Monotype Corsiva', cursive;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff69b4;
+    }
+
+    #contador {
+      font-size: 2em;
+      margin: 20px 0;
+      color: #fff;
+      font-family: 'Segoe UI Black', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .galeria {
       display: flex;
-      align-items: center;
       justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease;
-    }
-
-    #caixa-presente {
-      width: 150px;
-      height: 150px;
-      background-color: #ff69b4;
-      border-radius: 20px;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      z-index: 1;
       position: relative;
+    }
+
+    .galeria img {
+      width: 180px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .mensagem, .mensagem-texto-longo {
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-shadow: 1px 1px 4px #ff69b4;
+      padding: 0 20px;
+    }
+
+    .mensagem {
+      margin-top: 30px;
+      font-size: 1.5em;
+    }
+
+    .mensagem-texto-longo {
+      margin-top: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      text-align: justify;
+    }
+
+    video {
+      margin-top: 40px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .botoes-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .botao-surpresa {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      animation: pulso 1.5s infinite ease-in-out;
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     }
 
-    #caixa-presente::before, #caixa-presente::after {
-      content: '';
-      position: absolute;
-      background: white;
-    }
-
-    #caixa-presente::before {
-      width: 20px;
-      height: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    #caixa-presente::after {
-      height: 20px;
-      width: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    @keyframes pulso {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-
-    body.invisivel #conteudo-site {
+    .imagem-surpresa {
       display: none;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      animation: surgir 1s ease forwards;
+    }
+
+    @keyframes surgir {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .imagens-surpresa {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .contador-regressivo {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2cm;
+      flex-wrap: wrap;
+    }
+
+    .flip {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .flip div {
+      font-size: 2em;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .flip span {
+      font-size: 0.9em;
+      color: #333;
+    }
+
+    .espaco-final {
+      height: 150px;
+    }
+
+    .coraçao {
+      position: fixed;
+      top: -50px;
+      color: red;
+      animation: cair 8s linear infinite;
+      font-size: 2em;
+      z-index: 0;
+    }
+
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .estrela {
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: brilho 2s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes brilho {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .botao-musica, .botao-noturno {
+      position: fixed;
+      top: 15px;
+      padding: 6px 10px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      border: 1px solid #fff;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      z-index: 3;
+    }
+
+    .botao-musica:hover, .botao-noturno:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .botao-musica { right: 15px; }
+    .botao-noturno { left: 15px; }
+
+    .rota-memorias {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .rota-memorias h2 {
+      font-size: 2em;
+      margin-bottom: 25px;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .rota-memorias ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .memoria {
+      margin-bottom: 25px;
+      cursor: pointer;
+      font-size: 1.2em;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .memoria:hover {
+      color: #ff99cc;
+    }
+
+    .img-memoria {
+      display: none;
+      margin-top: 12px;
+      max-width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
-<body class="invisivel">
-  <!-- NOVO: Tela com caixa de presente -->
-  <div id="tela-presente">
-    <div id="caixa-presente" onclick="abrirPresente()"></div>
+<body>
+  <button class="botao-noturno" onclick="toggleModoNoturno()">🌙</button>
+  <button class="botao-musica" onclick="toggleMusica()">▶️</button>
+
+  <h1>Junior e Elaine 👩‍❤️‍👨</h1>
+  <div id="contador"></div>
+
+  <div class="galeria">
+    <img src="img/foto1.jpeg" alt="Foto 1" />
+    <img src="img/foto3.jpeg" alt="Foto 3" />
+    <img src="img/foto2.jpeg" alt="Foto 2" />
   </div>
 
-  <!-- CONTEÚDO DO SITE -->
-  <div id="conteudo-site">
-    <!-- seu conteúdo existente permanece o mesmo abaixo -->
+  <div class="mensagem">"Cada momento com você é uma nova chance de sorrir. Te amo! 💖"</div>
+  <div class="mensagem-texto-longo">Já faz um ano e dois meses desde que nos reencontramos [...]</div>
 
-    <button class="botao-noturno" onclick="toggleModoNoturno()">🌙</button>
-    <button class="botao-musica" onclick="toggleMusica()">▶️</button>
+  <video controls><source src="video.mp4" type="video/mp4"/></video>
 
-    <h1>Junior e Elaine 👩‍❤️‍👨</h1>
-    <div id="contador"></div>
-
-    <div class="galeria">
-      <img src="img/foto1.jpeg" alt="Foto 1" />
-      <img src="img/foto3.jpeg" alt="Foto 3" />
-      <img src="img/foto2.jpeg" alt="Foto 2" />
-    </div>
-
-    <div class="mensagem">"Cada momento com você é uma nova chance de sorrir. Te amo! 💖"</div>
-    <div class="mensagem-texto-longo">Já faz um ano e dois meses desde que nos reencontramos [...]</div>
-
-    <video controls><source src="video.mp4" type="video/mp4"/></video>
-
-    <div class="botoes-surpresa">
-      <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
-      <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
-      <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
-    </div>
-
-    <div class="imagens-surpresa">
-      <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" />
-      <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" />
-      <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" />
-    </div>
-
-    <div class="contador-regressivo">
-      <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
-      <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
-      <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
-      <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
-      <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
-    </div>
-
-    <div class="rota-memorias">
-      <h2>🗓️ Rota de Memórias</h2>
-      <ul>
-        <li class="memoria" onclick="mostrarMemoria(3)">📅 11/03/2024 – Nosso primeiro rolê<br><img id="memoria3" class="img-memoria" src="img/data3.jpeg" /></li>
-        <li class="memoria" onclick="mostrarMemoria(4)">📅 12/05/2024 – Primeiro Dia dos Namorados<br><img id="memoria4" class="img-memoria" src="img/data4.jpeg" /></li>
-        <li class="memoria" onclick="mostrarMemoria(1)">📅 23/05/2024 – Aliança<br><img id="memoria1" class="img-memoria" src="img/data1.jpeg" /></li>
-        <li class="memoria" onclick="mostrarMemoria(2)">📅 24/05/2024 – Nosso Compromisso<br><img id="memoria2" class="img-memoria" src="img/data2.jpeg" /></li>
-        <li class="memoria" onclick="mostrarMemoria(5)">📅 13/02/2025 – Um ano de nós<br><img id="memoria5" class="img-memoria" src="img/data5.jpeg" /></li>
-        <li class="memoria" onclick="mostrarMemoria(6)">📅 13/02/2025 – Meu amor<br><img id="memoria6" class="img-memoria" src="img/data7.jpeg" /></li>
-        <li class="memoria" onclick="mostrarMemoria(7)">📅 13/04/2025 – Nosso Atual<br><img id="memoria7" class="img-memoria" src="img/data6.jpeg" /></li>
-      </ul>
-    </div>
-
-    <div class="espaco-final"></div>
+  <div class="botoes-surpresa">
+    <button class="botao-surpresa" onclick="toggleSurpresa('img1')">🎁 Surpresa 1</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img2')">🎁 Surpresa 2</button>
+    <button class="botao-surpresa" onclick="toggleSurpresa('img3')">🎁 Surpresa 3</button>
   </div>
+
+  <div class="imagens-surpresa">
+    <img id="img1" class="imagem-surpresa" src="img/surpresa1.jpeg" />
+    <img id="img2" class="imagem-surpresa" src="img/surpresa2.jpeg" />
+    <img id="img3" class="imagem-surpresa" src="img/surpresa3.jpeg" />
+  </div>
+
+  <div class="contador-regressivo">
+    <div class="flip"><div id="diasR">00</div><span>Dias</span></div>
+    <div class="flip"><div id="horasR">00</div><span>Horas</span></div>
+    <div class="flip"><div id="minutosR">00</div><span>Minutos</span></div>
+    <div class="flip"><div id="segundosR">00</div><span>Segundos</span></div>
+    <div class="flip"><div>👩‍❤️‍👨</div><span></span></div>
+  </div>
+
+  <div class="rota-memorias">
+    <h2>🗓️ Rota de Memórias</h2>
+    <ul>
+      <li class="memoria" onclick="mostrarMemoria(3)">📅 11/03/2024 – Nosso primeiro rolê<br><img id="memoria3" class="img-memoria" src="img/data3.jpeg" /></li>
+      <li class="memoria" onclick="mostrarMemoria(4)">📅 12/05/2024 – Primeiro Dia dos Namorados<br><img id="memoria4" class="img-memoria" src="img/data4.jpeg" /></li>
+      <li class="memoria" onclick="mostrarMemoria(1)">📅 23/05/2024 – Aliança<br><img id="memoria1" class="img-memoria" src="img/data1.jpeg" /></li>
+      <li class="memoria" onclick="mostrarMemoria(2)">📅 24/05/2024 – Nosso Compromisso<br><img id="memoria2" class="img-memoria" src="img/data2.jpeg" /></li>
+      <li class="memoria" onclick="mostrarMemoria(5)">📅 13/02/2025 – Um ano de nós<br><img id="memoria5" class="img-memoria" src="img/data5.jpeg" /></li>
+      <li class="memoria" onclick="mostrarMemoria(6)">📅 13/02/2025 – Meu amor<br><img id="memoria6" class="img-memoria" src="img/data7.jpeg" /></li>
+      <li class="memoria" onclick="mostrarMemoria(7)">📅 13/04/2025 – Nosso Atual<br><img id="memoria7" class="img-memoria" src="img/data6.jpeg" /></li>
+    </ul>
+  </div>
+
+  <div class="espaco-final"></div>
 
   <audio id="musica" loop>
     <source src="Musica.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
-    // NOVO: lógica da caixa de presente
-    function abrirPresente() {
-      document.getElementById("tela-presente").style.opacity = "0";
-      setTimeout(() => {
-        document.getElementById("tela-presente").style.display = "none";
-        document.body.classList.remove("invisivel");
-      }, 800);
-    }
-
-    // CONTINUAÇÃO DO SEU SCRIPT ORIGINAL
-
     const inicio = new Date("2024-02-13T00:00:00").getTime();
     const destino = new Date("2025-06-16T21:00:00").getTime();
     const musica = document.getElementById("musica");
