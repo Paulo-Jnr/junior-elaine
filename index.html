@@ -4,6 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Junior & Elaine 💑</title>
+<style>
+  /* Tela de presente que cobre tudo */
+  #tela-presente {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffdee9, #b5fffc);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.8s ease;
+  }
+
+  #tela-presente img {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    animation: pulse 1.2s infinite;
+  }
+
+  #tela-presente p {
+    color: #ff69b4;
+    font-size: 1.2em;
+    margin-top: 15px;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .oculto {
+    display: none !important;
+  }
+</style>
+  
   <style>
     body {
       margin: 0;
@@ -263,6 +304,11 @@
   </style>
 </head>
 <body>
+<!-- Tela do presente -->
+<div id="tela-presente">
+  <img src="img/presente.png" alt="Abrir presente" onclick="abrirPresente()" />
+  <p>Clique no presente 💝</p>
+</div>
   <button class="botao-noturno" onclick="toggleModoNoturno()">🌙</button>
   <button class="botao-musica" onclick="toggleMusica()">▶️</button>
 
@@ -411,6 +457,11 @@
       const img = document.getElementById("memoria" + id);
       img.style.display = img.style.display === "block" ? "none" : "block";
     }
-  </script>
+  </script> 
+  <script>
+  function abrirPresente() {
+    document.getElementById("tela-presente").classList.add("oculto");
+  }
+</script>
 </body>
 </html>
